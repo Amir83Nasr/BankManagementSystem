@@ -12,6 +12,16 @@ using namespace std;
 
 bool login_admin();
 
+void write_employee();
+
+void modify_employee(int);
+
+void delete_employee(int);
+
+void display_one_employee(int);
+
+void display_all_employee();
+
 //---------------------- EMPLOYEE -------------------------
 
 bool login_employee(int);
