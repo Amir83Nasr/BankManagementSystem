@@ -21,10 +21,10 @@ protected:
     int Enumber;
 
 public:
-    int get_Enumber()
-    {
-        return Enumber;
-    }
+    int get_Enumber();
+    // {
+    //     return Enumber;
+    // }
 };
 
 //===============================================

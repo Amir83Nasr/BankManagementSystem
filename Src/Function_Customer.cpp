@@ -13,7 +13,50 @@ using namespace std;
 
 //=================================== CLASS ===========================================
 
+void Customer::create_customer(int Cnum)
+{
 
+    Cnumber = Cnum;
+
+    cout << "\nEnter The Name of The Customer : ";
+    cin.ignore();
+    cin.get(Cname, 30);
+    // getline(cin, Cname);
+
+    cout << "\nEnter The Balance : ";
+    cin >> Cbalance;
+
+    cout << "\n\n ===== Customer Created ... =====";
+}
+
+
+void Customer::show_customer()
+{
+    cout << "\nCustomer Number : " << Cnumber << endl;
+
+    cout << "\nCustomer Holder Name : " << Cname << endl;
+
+    cout << "\nBalance amount : " << Cbalance << endl;
+
+    cout << "\n------------------------------------------\n";
+}
+
+void Customer::modify()
+{
+    cout << "\nThe Customer Number" << Cnumber;
+
+    cout << "\n\nEnter The Name of The Customer Holder : ";
+    cin.ignore();
+    cin.get(Cname, 30);
+    // getline(cin,Cname);
+    cout << "\nEnter The Amount : ";
+    cin >> Cbalance;
+}
+
+void Customer::deposit(int x)
+{
+    Cbalance += x;
+}
 
 //=================================== FUNCTION : 1 ===========================================
 

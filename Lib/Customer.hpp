@@ -23,51 +23,51 @@ protected:
     double Cbalance;
 
 public:
-    void create_customer(int Cnum)
-    {
-        Cnumber = Cnum;
+    void create_customer(int Cnum);
+    // {
+    //     Cnumber = Cnum;
 
-        cout << "\nEnter The Name of The Customer : ";
-        cin.ignore();
-        cin.get(Cname, 30);
-        // getline(cin, Cname);
+    //     cout << "\nEnter The Name of The Customer : ";
+    //     cin.ignore();
+    //     cin.get(Cname, 30);
+    //     // getline(cin, Cname);
 
-        cout << "\nEnter The Balance : ";
-        cin >> Cbalance;
+    //     cout << "\nEnter The Balance : ";
+    //     cin >> Cbalance;
 
-        cout << "\n\n ===== Customer Created ... =====";
-    }
+    //     cout << "\n\n ===== Customer Created ... =====";
+    // }
 
-    void show_customer()
-    {
-        cout << "\nCustomer Number : " << Cnumber << endl;
+    void show_customer();
+    // {
+    //     cout << "\nCustomer Number : " << Cnumber << endl;
 
-        cout << "\nCustomer Holder Name : " << Cname << endl;
+    //     cout << "\nCustomer Holder Name : " << Cname << endl;
 
-        cout << "\nBalance amount : " << Cbalance << endl;
+    //     cout << "\nBalance amount : " << Cbalance << endl;
 
-        cout << "\n------------------------------------------\n";
-    }
+    //     cout << "\n------------------------------------------\n";
+    // }
 
-    void modify()
-    {
-        cout << "\nThe Customer Number" << Cnumber;
+    void modify();
+    // {
+    //     cout << "\nThe Customer Number" << Cnumber;
 
-        cout << "\n\nEnter The Name of The Customer Holder : ";
-        cin.ignore();
-        cin.get(Cname, 30);
-        // getline(cin,Cname);
+    //     cout << "\n\nEnter The Name of The Customer Holder : ";
+    //     cin.ignore();
+    //     cin.get(Cname, 30);
+    //     getline(cin,Cname);
 
-        cout << "\nEnter The Amount : ";
-        cin >> Cbalance;
-    }
+    //     cout << "\nEnter The Amount : ";
+    //     cin >> Cbalance;
+    // }
 
     //------------------------------------------------------------------
 
-    void deposit(int x)
-    { // function to accept amount and add to balance amount
-        Cbalance += x;
-    }
+    void deposit(int x);
+    // { // function to accept amount and add to balance amount
+    //     Cbalance += x;
+    // }
 
     void draw(int x)
     { // function to accept amount and subtract from balance amount

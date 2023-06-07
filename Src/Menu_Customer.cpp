@@ -33,6 +33,7 @@ void menu_customer(int cinNum)
         cout << "\n\n\t3) Make Transaction                 --                  Enteghal Vajh (3";
         cout << "\n\n\t4) Balance Enquiry                  --                  Estelam Mojodi (4";
         cout << "\n\n\t5) Modify The Account               --                  Eslah Hesab (5";
+        cout << "\n\n\t6) Choose account                   --                  Entekhab Hesab (6";
 
         cout << "\n\n\t------------------------------------------------------------------------------";
 
@@ -63,6 +64,9 @@ void menu_customer(int cinNum)
         case '5':
             modify_customer(cstNumber);
             break;
+
+        case '6':
+            
 
         case '0':
             system("clear");

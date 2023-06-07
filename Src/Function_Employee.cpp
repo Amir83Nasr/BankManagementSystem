@@ -14,6 +14,10 @@ using namespace std;
 
 //=================================== CLASS ===========================================
 
+int Employee::get_Enumber(){
+    return Enumber;
+}
+
 //=================================== FUNCTION : 1 ===========================================
 
 bool login_employee(int cinNum)
