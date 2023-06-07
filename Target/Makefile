@@ -1,7 +1,7 @@
 all : Main.exe
 
 Main.exe : Main.o Function_Admin.o Function_Employee.o Function_Customer.o Function_Account.o Menu_Main.o Menu_Admin.o Menu_Employee.o Menu_Customer.o Menu_Account.o
-	g++ -o Main.exe Function_Admin.o Function_Employee.o Function_Customer.o Function_Account.o Main.o Menu_Main.o Menu_Admin.o Menu_Employee.o Menu_Customer.o Menu_Account.o
+	g++ -o Main.exe Main.o Function_Admin.o Function_Employee.o Function_Customer.o Function_Account.o Menu_Main.o Menu_Admin.o Menu_Employee.o Menu_Customer.o Menu_Account.o
 
 #================================== CLASS : FUNCTION ==================================
 
