@@ -1,7 +1,7 @@
 all : Main.exe
 
 Main.exe : Main.o Function_Admin.o Function_Employee.o Function_Customer.o Function_Account.o Menu_Main.o Menu_Admin.o Menu_Employee.o Menu_Customer.o Menu_Account.o
-	g++ -o Main.exe Function_Admin.o Function_Employee.o Function_Customer.o Function_Account.o Main.o Menu_Main.o Menu_Admin.o Menu_Employee.o Menu_Customer.o Menu_Account.o
+	g++ -o Main.exe Main.o Function_Admin.o Function_Employee.o Function_Customer.o Function_Account.o Menu_Main.o Menu_Admin.o Menu_Employee.o Menu_Customer.o Menu_Account.o
 
 #================================== CLASS : FUNCTION ==================================
 
@@ -40,4 +40,4 @@ Menu_Account.o : ../Src/Menu_Account.cpp ../Lib/Menu.hpp
 #===========================================================================
 
 # Main.exe : 
-# 	g++ -o Main.exe Main.cpp Menu_Main.cpp Menu_Admin.cpp Menu_Employee.cpp Menu_Customer.cpp Admin.cpp Employee.cpp Customer.cpp
+# 	g++ -o Main.exe Main.cpp Function_Admin.cpp Function_Employee.cpp Function_Customer.cpp Function_Account.cpp Menu_Main.cpp Menu_Admin.cpp Menu_Employee.cpp Menu_Customer.cpp Menu_Account.cpp
