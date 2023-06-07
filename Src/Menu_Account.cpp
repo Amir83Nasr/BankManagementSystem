@@ -16,7 +16,7 @@ void menu_account()
 {
     char input;
     int cstNumber;
-    int cstNumber;
+    int num;
 
     do
     {
