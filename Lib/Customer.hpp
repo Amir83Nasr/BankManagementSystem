@@ -69,28 +69,28 @@ public:
     //     Cbalance += x;
     // }
 
-    void draw(int x)
-    { // function to accept amount and subtract from balance amount
-        Cbalance -= x;
-    }
+    void draw(int x);
+    // { // function to accept amount and subtract from balance amount
+    //     Cbalance -= x;
+    // }
 
-    void report()
-    {
-        // "  Account no.           Name             Balance "
-        cout << "  " << left << setw(14) << Cnumber << setw(26) << Cname << setw(12) << Cbalance << endl;
-    }
+    void report();
+    // {
+    //     // "  Account no.           Name             Balance "
+    //     //cout << "  " << left << setw(14) << Cnumber << setw(26) << Cname << setw(12) << Cbalance << endl;
+    // }
 
     //--------------- Get & Set -----------------
 
-    int get_Cnumber()
-    {
-        return Cnumber;
-    }
+    int get_Cnumber();
+    // {
+    //     return Cnumber;
+    // }
 
-    int get_Cbalance()
-    {
-        return Cbalance;
-    }
+    int get_Cbalance();
+    // {
+    //     return Cbalance;
+    // }
 };
 
 //===============================================

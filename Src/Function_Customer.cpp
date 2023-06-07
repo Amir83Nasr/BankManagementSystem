@@ -58,6 +58,29 @@ void Customer::deposit(int x)
     Cbalance += x;
 }
 
+void Customer::draw(int x)
+{
+    Cbalance -= x;
+}
+
+void Customer::report()
+{
+    // "  Account no.           Name             Balance "
+        cout << "  " << left << setw(14) << Cnumber << setw(26) << Cname << setw(12) << Cbalance << endl;
+}
+
+//--------------- Get & Set -----------------
+
+int Customer::get_Cnumber()
+{
+    return Cnumber;
+}
+
+int Customer::get_Cbalance()
+{
+    return Cbalance;
+}
+
 //=================================== FUNCTION : 1 ===========================================
 
 void write_customer()
