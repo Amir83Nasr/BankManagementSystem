@@ -122,7 +122,7 @@ void write_employee()
     {
         Employee newEmployee;
 
-        newEmployee.create_customer(empNumber);
+        newEmployee.create_employee(empNumber);
         outFile.write((char *)&newEmployee, sizeof(Employee));
     }
     else
