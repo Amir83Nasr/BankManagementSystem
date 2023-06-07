@@ -6,6 +6,7 @@
 
 #include "../Lib/Employee.hpp"
 #include "../Lib/Customer.hpp"
+#include "../Lib/Account.hpp"
 
 #include <iostream>
 
@@ -17,7 +18,7 @@ void menu_employee(int cinNum)
 {
 
     char input;
-    int num;
+    int cstNumber;
 
     int empNumber = cinNum;
 
@@ -48,15 +49,15 @@ void menu_employee(int cinNum)
             break;
 
         case '2':
-            cout << "\n\n\tEnter The Account Number : ";
-            cin >> num;
-            delete_customer(num);
+            cout << "\n\n\tEnter The Customer Number : ";
+            cin >> cstNumber;
+            delete_customer(cstNumber);
             break;
 
         case '3':
-            cout << "\n\n\tEnter The Account Number : ";
-            cin >> num;
-            display_one_customer(num);
+            cout << "\n\n\tEnter The Customer Number : ";
+            cin >> cstNumber;
+            display_one_customer(cstNumber);
             break;
 
         case '4':

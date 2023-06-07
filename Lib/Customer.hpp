@@ -7,11 +7,13 @@
 #include <string>
 #include <fstream>
 
+#include "Account.hpp"
+
 using namespace std;
 
 //===============================================
 
-class Customer
+class Customer : public Account
 {
 protected:
     char Cname[31];

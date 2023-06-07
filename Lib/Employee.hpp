@@ -8,6 +8,7 @@
 #include <fstream>
 
 #include "Customer.hpp"
+#include "Account.hpp"
 
 using namespace std;
 
