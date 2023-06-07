@@ -19,7 +19,7 @@ void menu_admin()
 {
     char input;
     int cstNumber;
-    int cstNumber;
+    int empNumber;
 
     do
     {
@@ -67,14 +67,14 @@ void menu_admin()
 
         case '5':
             cout << "\n\n\tEnter The Customer Number : ";
-            cin >> num;
-            delete_customer(num);
+            cin >> cstNumber;
+            delete_customer(cstNumber);
             break;
 
         case '6':
             cout << "\n\n\tEnter The Customer Number : ";
-            cin >> num;
-            display_one_customer(num);
+            cin >> cstNumber;
+            display_one_customer(cstNumber);
             break;
 
         case '7':
