@@ -27,11 +27,8 @@ public:
     void modify();
     void report();
 
-
     int get_Enumber();
-    // {
-    //     return Enumber;
-    // }
+
 };
 
 //===============================================
