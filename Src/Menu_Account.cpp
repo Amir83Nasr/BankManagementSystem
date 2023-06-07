@@ -4,18 +4,15 @@
 
 #include "../Lib/Function.hpp"
 
-#include "../Lib/Admin.hpp"
-#include "../Lib/Employee.hpp"
-#include "../Lib/Customer.hpp"
 #include "../Lib/Account.hpp"
 
 #include <iostream>
 
 using namespace std;
 
-//=================================== MENU : ADMIN =======================================
+//=================================== MENU : ACCOUNT =======================================
 
-void menu_admin()
+void menu_account()
 {
     char input;
     int cstNumber;
@@ -26,7 +23,7 @@ void menu_admin()
         intro();
 
         cout << endl;
-        cout << "\n\n\n\t MENU : ADMIN";
+        cout << "\n\n\n\t MENU : CUSTOMER";
 
         cout << "\n\n\t1) New Employee                     --                  Ejad Karmand (1";
         cout << "\n\n\t2) Delete Employee                  --                  Hazf Karmand (2";

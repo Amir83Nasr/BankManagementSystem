@@ -7,6 +7,7 @@
 #include "../Lib/Admin.hpp"
 #include "../Lib/Employee.hpp"
 #include "../Lib/Customer.hpp"
+#include "../Lib/Account.hpp"
 
 #include <iostream>
 
@@ -79,7 +80,7 @@ void menu()
             break;
 
         case '3':
-            cout << "\n\t\tEnter your Account Number : ";
+            cout << "\n\t\tEnter your Customer Number : ";
             cin >> number;
 
             if (login_customer(number) == false)

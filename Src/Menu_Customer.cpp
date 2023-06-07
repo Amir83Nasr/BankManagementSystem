@@ -5,6 +5,7 @@
 #include "../Lib/Function.hpp"
 
 #include "../Lib/Customer.hpp"
+#include "../Lib/Account.hpp"
 
 #include <iostream>
 
@@ -18,7 +19,7 @@ void menu_customer(int cinNum)
     char input;
     int num;
 
-    int accNumber = cinNum;
+    int cstNumber = cinNum;
 
     do
     {
@@ -44,11 +45,11 @@ void menu_customer(int cinNum)
         switch (input)
         {
         case '1':
-            deposit_withdraw(accNumber, 1);
+            deposit_withdraw(cstNumber, 1);
             break;
 
         case '2':
-            deposit_withdraw(accNumber, 2);
+            deposit_withdraw(cstNumber, 2);
             break;
 
         case '3':
@@ -56,11 +57,11 @@ void menu_customer(int cinNum)
             break;
 
         case '4':
-            display_one_customer(accNumber);
+            display_one_customer(cstNumber);
             break;
 
         case '5':
-            modify_customer(accNumber);
+            modify_customer(cstNumber);
             break;
 
         case '0':
