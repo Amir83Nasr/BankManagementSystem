@@ -23,6 +23,9 @@ void Employee::create_employee(int Enum)
     cin.get(Ename, 30);
     // getline(cin, Cname);
 
+    cout << "\nEnter the Password for the Employee : ";
+    cin >> Epassword;
+
     cout << "\n\n ===== Employee Created ... =====";
 }
 
@@ -43,12 +46,15 @@ void Employee::modify()
     cin.ignore();
     cin.get(Ename, 30);
     // getline(cin,Cname);
+
+    cout << "\n\nEnter the new Password for the employee : ";
+    cin >> Epassword;
 }
 
 void Employee::report()
 {
     // "  Account no.           Name   "
-    cout << "  " << left << setw(14) << Enumber << setw(26) << Ename << endl;
+    cout << "  " << left << setw(14) << Enumber << setw(26) << Ename << setw(12) << Epassword << endl;
 }
 
 
@@ -58,14 +64,21 @@ int Employee::get_Enumber(){
     return Enumber;
 }
 
+int Employee::get_Epassword()
+{
+    return Epassword;
+}
+
 //=================================== FUNCTION : 1 ===========================================
 
-bool login_employee(int cinNum)
+bool login_employee(int cinNumPass, int cinNum)
 {
     bool login{false};
     int empNumber;
+    int empNumPassword;
 
     empNumber = cinNum;
+    empNumPassword = cinNumPass;
 
     // cout << "Enter you Employee Number : ";
     // cin >> empNumber;
@@ -75,7 +88,7 @@ bool login_employee(int cinNum)
     ifstream inFile("../Data/Employee.dat");
     while (inFile.read((char *)&employee, sizeof(Employee)))
     {
-        if (employee.get_Enumber() == empNumber)
+        if ((employee.get_Enumber() == empNumber) && (employee.get_Cpassword() == empNumPassword))
         {
             login = true;
             break;
@@ -104,8 +117,10 @@ void write_employee()
 
     int empNumber;
 
-    cout << "Enter Your Employee Number: ";
-    cin >> empNumber;
+    // cout << "Enter Your Employee Number: ";
+    // cin >> empNumber;
+
+    empNumber = generateRandomNumber();
 
     fstream inFile("../Data/Employee.dat", ios::binary | ios::in);
     while (inFile.read((char *)&employee, sizeof(employee)))
@@ -124,6 +139,7 @@ void write_employee()
 
         newEmployee.create_employee(empNumber);
         outFile.write((char *)&newEmployee, sizeof(Employee));
+        cout << "\n\nYour employee number is : " << empNumber;
     }
     else
     {

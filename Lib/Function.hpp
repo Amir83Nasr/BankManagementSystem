@@ -24,7 +24,7 @@ void display_all_employee();
 
 //---------------------- EMPLOYEE -------------------------
 
-bool login_employee(int);
+bool login_employee(int, int);
 
 void write_customer();
 
@@ -38,10 +38,12 @@ void display_all_customer();
 
 //---------------------- CUSTOMER -------------------------
 
-bool login_customer(int);
+bool login_customer(int, int);
 
 void deposit_withdraw(int, int);
 
 //---------------------- ACCOUNT -------------------------
+
+int generateRandomNumber();
 
 //===============================================

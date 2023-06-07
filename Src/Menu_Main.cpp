@@ -26,6 +26,7 @@ void menu()
 {
     char input;
     int number;
+    int pass;
 
     do
     {
@@ -66,7 +67,10 @@ void menu()
             cout << "\n\t\tEnter your Employee Number : ";
             cin >> number;
 
-            if (login_employee(number) == false)
+            cout << "\n\t\tEnter your password : ";
+            cin >> pass;
+
+            if (login_employee(pass, number) == false)
             {
                 break;
             }
@@ -83,7 +87,10 @@ void menu()
             cout << "\n\t\tEnter your Customer Number : ";
             cin >> number;
 
-            if (login_customer(number) == false)
+            cout << "\n\t\tEnter your password : ";
+            cin >> pass;
+
+            if (login_customer(pass, number) == false)
             {
                 break;
             }

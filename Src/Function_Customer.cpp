@@ -13,15 +13,18 @@ using namespace std;
 
 //=================================== CLASS ===========================================
 
-void Customer::create_customer(int Cpass)
+void Customer::create_customer(int Cnum)
 {
 
-    Cpassword = Cpass;
+    Cnumber = Cnum;
 
     cout << "\nEnter The Name of The Customer : ";
     cin.ignore();
     cin.get(Cname, 30);
     // getline(cin, Cname);
+
+    cout << "\nEnter the password of the Customer : ";
+    cin >> Cpassword;
 
     cout << "\nEnter The Balance : ";
     cin >> Cbalance;
@@ -69,7 +72,7 @@ void Customer::draw(int x)
 void Customer::report()
 {
     // "  Account no.           Name             Balance "
-        cout << "  " << left << setw(14) << Cnumber << setw(26) << Cname << setw(12) << Cbalance << endl;
+        cout << "  " << left << setw(14) << Cnumber << setw(26) << Cname << setw(12) << Cbalance << setw(12) << Cpassword << endl;
 }
 
 //--------------- Get & Set -----------------
@@ -84,6 +87,11 @@ int Customer::get_Cbalance()
     return Cbalance;
 }
 
+int Customer::get_Cpassword()
+{
+    return Cpassword;
+}
+
 //=================================== FUNCTION : 1 ===========================================
 
 void write_customer()
@@ -94,8 +102,10 @@ void write_customer()
 
     int cstNumber;
 
-    cout << "Enter Your Customer Number: ";
-    cin >> cstNumber;
+    // cout << "Enter Your Customer Number: ";
+    // cin >> cstNumber;
+
+    cstNumber = generateRandomNumber();
 
     fstream inFile("../Data/Customer.dat", ios::binary | ios::in);
     while (inFile.read((char *)&customer, sizeof(Customer)))
@@ -114,6 +124,7 @@ void write_customer()
 
         newCustomer.create_customer(cstNumber);
         outFile.write((char *)&newCustomer, sizeof(Customer));
+        cout << "\n\nYour Customer Number is : " << cstNumber;
     }
     else
     {
@@ -247,9 +258,9 @@ void display_all_customer()
     }
 
     cout << "\n\n\t\tACCOUNT HOLDER LIST\n\n";
-    cout << "====================================================\n";
-    cout << "  Account no.           Name             Balance\n";
-    cout << "====================================================\n";
+    cout << "==============================================================\n";
+    cout << "  Account no.           Name             Balance        Pass\n";
+    cout << "==============================================================\n";
 
     while (inFile.read((char *)&customer, sizeof(Customer)))
     {
@@ -319,11 +330,13 @@ void deposit_withdraw(int cstNumber, int option)
 
 //=================================== FUNCTION : 7 ===========================================
 
-bool login_customer(int cinNum)
+bool login_customer(int cinNumPass, int cinNum)
 {
     bool login{false};
+    int cstPassword;
     int cstNumber;
 
+    cstPassword = cinNumPass;
     cstNumber = cinNum;
 
     // cout << "Enter your Account Number : ";
@@ -334,11 +347,12 @@ bool login_customer(int cinNum)
     ifstream inFile("../Data/Customer.dat");
     while (inFile.read((char *)&customer, sizeof(Customer)))
     {
-        if (customer.get_Cnumber() == cstNumber)
+        if ((customer.get_Cpassword() == cstPassword) && (customer.get_Cnumber() == cstNumber))
         {
             login = true;
             break;
         }
+        
     }
 
     if (login == true)

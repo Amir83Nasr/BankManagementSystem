@@ -28,6 +28,7 @@ public:
     void report();
 
     int get_Enumber();
+    int get_Epassword();
 
 };
 
