@@ -19,6 +19,7 @@ class Employee : public Customer
 protected:
     char Ename[31];
     int Enumber;
+    int Epassword;
 
 public:
     void create_employee(int Enum);

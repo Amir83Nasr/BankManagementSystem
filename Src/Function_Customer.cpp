@@ -13,10 +13,10 @@ using namespace std;
 
 //=================================== CLASS ===========================================
 
-void Customer::create_customer(int Cnum)
+void Customer::create_customer(int Cpass)
 {
 
-    Cnumber = Cnum;
+    Cpassword = Cpass;
 
     cout << "\nEnter The Name of The Customer : ";
     cin.ignore();
@@ -48,6 +48,9 @@ void Customer::modify()
     cout << "\n\nEnter The Name of The Customer Holder : ";
     cin.ignore();
     cin.get(Cname, 30);
+
+    cout << "\n\nEnter the new Password for the customer : ";
+    cin >> Cpassword;
     // getline(cin,Cname);
     cout << "\nEnter The Amount : ";
     cin >> Cbalance;

@@ -19,11 +19,12 @@ protected:
     char Cname[31];
     // string Cname;
     int Cnumber;
+    int Cpassword;
 
     double Cbalance;
 
 public:
-    void create_customer(int Cnum);
+    void create_customer(int Cpass);
     // {
     //     Cnumber = Cnum;
 
@@ -91,6 +92,8 @@ public:
     // {
     //     return Cbalance;
     // }
+
+    int get_Cpassword();
 };
 
 //===============================================
