@@ -33,11 +33,12 @@ void menu_employee(int cinNum)
         cout << "\n\n\t2) Delete Customer                  --                  Hazf Moshtari (2";
         cout << "\n\n\t3) One Customer List                --                  List Yek Moshtari (3";
         cout << "\n\n\t4) All Customers List               --                  List Tamam Moshtari (4";
+        cout << "\n\n\t5) Choose Customer                  --                  Entekhap Moshtari(5";
 
         cout << "\n\n\t------------------------------------------------------------------------------";
 
         cout << "\n\n\t0) RETURN                           --                  BAZGASHT (0";
-        cout << "\n\n\n\tSelect Your Option (0-4) : ";
+        cout << "\n\n\n\tSelect Your Option (0-5) : ";
 
         cin >> input;
         cout << endl;
@@ -62,6 +63,10 @@ void menu_employee(int cinNum)
 
         case '4':
             display_all_customer();
+            break;
+
+        case '5':
+
             break;
 
         case '0':

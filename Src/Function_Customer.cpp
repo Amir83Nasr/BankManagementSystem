@@ -13,7 +13,87 @@ using namespace std;
 
 //=================================== CLASS ===========================================
 
+void Customer::create_customer(int Cnum)
+{
 
+    Cnumber = Cnum;
+
+    int Anum = generateRandomNumber();
+
+    cout << "\nEnter The Name of The Customer : ";
+    cin.ignore();
+    cin.get(Cname, 30);
+    // getline(cin, Cname);
+
+    cout << "\nEnter the password of the Customer : ";
+    cin >> Cpassword;
+
+    create_account(Anum);
+
+    cout << "\n\n ===== Customer Created ... =====";
+}
+
+
+void Customer::show_customer()
+{
+    cout << "\nCustomer Number : " << Cnumber << endl;
+
+    cout << "\nCustomer Holder Name : " << Cname << endl;
+
+    show_account();
+
+    // cout << "\nBalance amount : " << Cbalance << endl;
+
+    cout << "\n------------------------------------------\n";
+}
+
+void Customer::modify()
+{
+    cout << "\nThe Customer Number" << Cnumber;
+
+    cout << "\n\nEnter The Name of The Customer Holder : ";
+    cin.ignore();
+    cin.get(Cname, 30);
+
+    cout << "\n\nEnter the new Password for the customer : ";
+    cin >> Cpassword;
+    // getline(cin,Cname);
+    cout << "\nEnter The Amount : ";
+    cin >> Cbalance;
+}
+
+void Account::deposit(int x)
+{
+    Abalance += x;
+}
+
+void Account::draw(int x)
+{
+    Abalance -= x;
+}
+
+void Customer::report()
+{
+    // "  Customer no.           Name             Pass "
+        cout << "  " << left << setw(14) << Cnumber << setw(26) << Cname << setw(12) << Cpassword << endl;
+}
+
+//--------------- Get & Set -----------------
+
+int Customer::get_Cnumber()
+{
+    return Cnumber;
+}
+
+// int Customer::get_Cbalance()
+// {
+//     return Cbalance;
+// }
+
+int Customer::get_Cpassword()
+{
+    return Cpassword;
+}
 
 //=================================== FUNCTION : 1 ===========================================
 
@@ -21,17 +101,19 @@ void write_customer()
 {
     bool find = false;
 
-    Customer account;
+    Customer customer;
 
-    int accNumber;
+    int cstNumber;
 
-    cout << "Enter Your Account Number: ";
-    cin >> accNumber;
+    // cout << "Enter Your Customer Number: ";
+    // cin >> cstNumber;
+
+    cstNumber = generateRandomNumber();
 
     fstream inFile("../Data/Customer.dat", ios::binary | ios::in);
-    while (inFile.read((char *)&account, sizeof(Customer)))
+    while (inFile.read((char *)&customer, sizeof(Customer)))
     {
-        if (account.get_Cnumber() == accNumber)
+        if (customer.get_Cnumber() == cstNumber)
             find = true;
     }
     inFile.close();
@@ -41,10 +123,11 @@ void write_customer()
 
     if (find == false)
     {
-        Customer newAccount;
+        Customer newCustomer;
 
-        newAccount.create_customer(accNumber);
-        outFile.write((char *)&newAccount, sizeof(Customer));
+        newCustomer.create_customer(cstNumber);
+        outFile.write((char *)&newCustomer, sizeof(Customer));
+        cout << "\n\nYour Customer Number is : " << cstNumber;
     }
     else
     {
@@ -56,11 +139,11 @@ void write_customer()
 
 //=================================== FUNCTION : 2 ===========================================
 
-void modify_customer(int accNumber)
+void modify_customer(int cstNumber)
 {
     bool find = false;
 
-    Customer account;
+    Customer customer;
 
     fstream File("../Data/Customer.dat", ios::binary | ios::in | ios::out);
     if (!File)
@@ -69,19 +152,19 @@ void modify_customer(int accNumber)
         return;
     }
 
-    while (File.read((char *)&account, sizeof(Customer)) && find == false)
+    while (File.read((char *)&customer, sizeof(Customer)) && find == false)
     {
-        if (account.get_Cnumber() == accNumber)
+        if (customer.get_Cnumber() == cstNumber)
         {
-            account.show_customer();
+            customer.show_customer();
 
             cout << "\n\nEnter The New Details of Customer : " << endl;
-            account.modify();
+            customer.modify();
 
-            long int pos = (-1) * (sizeof(Customer));
+            long long int pos = (-1) * (sizeof(Customer));
             File.seekp(pos, ios::cur);
 
-            File.write((char *)&account, sizeof(Customer));
+            File.write((char *)&customer, sizeof(Customer));
             cout << "\n\n\t Record Updated ...";
 
             find = true;
@@ -97,9 +180,9 @@ void modify_customer(int accNumber)
 
 //=================================== FUNCTION : 3 ===========================================
 
-void delete_customer(int accNumber)
+void delete_customer(int cstNumber)
 {
-    Customer account;
+    Customer customer;
 
     ifstream inFile;
     ofstream outFile;
@@ -114,11 +197,11 @@ void delete_customer(int accNumber)
     outFile.open("../Data/Temp.dat", ios::binary);
     inFile.seekg(0, ios::beg);
 
-    while (inFile.read((char *)&account, sizeof(Customer)))
+    while (inFile.read((char *)&customer, sizeof(Customer)))
     {
-        if (account.get_Cnumber() != accNumber)
+        if (customer.get_Cnumber() != cstNumber)
         {
-            outFile.write((char *)&account, sizeof(Customer));
+            outFile.write((char *)&customer, sizeof(Customer));
         }
     }
     inFile.close();
@@ -132,9 +215,9 @@ void delete_customer(int accNumber)
 
 //=================================== FUNCTION : 4 ===========================================
 
-void display_one_customer(int accNumber)
+void display_one_customer(int cstNumber)
 {
-    Customer account;
+    Customer customer;
 
     bool find = false;
 
@@ -147,11 +230,11 @@ void display_one_customer(int accNumber)
 
     cout << "\nBALANCE DETAILS\n";
 
-    while (inFile.read((char *)&account, sizeof(Customer)))
+    while (inFile.read((char *)&customer, sizeof(Customer)))
     {
-        if (account.get_Cnumber() == accNumber)
+        if (customer.get_Cnumber() == cstNumber)
         {
-            account.show_customer();
+            customer.show_customer();
             find = true;
             break;
         }
@@ -168,7 +251,7 @@ void display_one_customer(int accNumber)
 
 void display_all_customer()
 {
-    Customer account;
+    Customer customer;
 
     ifstream inFile("../Data/Customer.dat", ios::binary);
     if (!inFile)
@@ -178,40 +261,40 @@ void display_all_customer()
     }
 
     cout << "\n\n\t\tACCOUNT HOLDER LIST\n\n";
-    cout << "====================================================\n";
-    cout << "  Account no.           Name             Balance\n";
-    cout << "====================================================\n";
+    cout << "=====================================================\n";
+    cout << "  Customer no.           Name             Balance\n";
+    cout << "======================================================\n";
 
-    while (inFile.read((char *)&account, sizeof(Customer)))
+    while (inFile.read((char *)&customer, sizeof(Customer)))
     {
-        account.report();
+        customer.report();
     }
     inFile.close();
 }
 
 //=================================== FUNCTION : 6 ===========================================
 
-void deposit_withdraw(int acNumber, int option)
+void deposit_withdraw(int actNumber, int option)
 {
     int amount{};
 
     bool find = false;
 
-    Customer account;
+    Account account;
 
     fstream File;
-    File.open("../Data/Customer.dat", ios::binary | ios::in | ios::out);
+    File.open("../Data/Account.dat", ios::binary | ios::in | ios::out);
     if (!File)
     {
         cout << "File could not be open !! Press any Key...";
         return;
     }
 
-    while (File.read((char *)&account, sizeof(Customer)) && find == false)
+    while (File.read((char *)&account, sizeof(Account)) && find == false)
     {
-        if (account.get_Cnumber() == acNumber)
+        if (account.get_Anumber() == actNumber)
         {
-            account.show_customer();
+            account.show_account();
 
             if (option == 1)
             {
@@ -231,10 +314,10 @@ void deposit_withdraw(int acNumber, int option)
                 account.draw(amount);
             }
 
-            long int pos = (-1) * (sizeof(Customer));
+            long long int pos = (-1) * (sizeof(Customer));
             File.seekp(pos, ios::cur);
 
-            File.write((char *)&account, sizeof(Customer));
+            File.write((char *)&account, sizeof(Account));
             cout << "\n\n\t Record Updated";
 
             find = true;
@@ -250,26 +333,83 @@ void deposit_withdraw(int acNumber, int option)
 
 //=================================== FUNCTION : 7 ===========================================
 
-bool login_customer(int cinNum)
+// void transaction(int AnumSend, int AnumRec)
+// {
+//     int amount{};
+
+//     bool find = false;
+
+//     Account accountSend;
+//     Account accountRec;
+
+//     fstream File;
+//     File.open("../Data/Account.dat", ios::binary | ios::in | ios::out);
+//     if (!File)
+//     {
+//         cout << "File could not be open !! Press any Key...";
+//         return;
+//     }
+
+//     while (File.read((char *)&accountSend, sizeof(Account)) && File.read((char *)&accountRec, sizeof(Account)) && find == false)
+//     {
+//         if (accountSend.get_Anumber() == AnumSend && accountRec.get_Anumber() == AnumRec)
+//         {
+//             accountSend.show_account();
+
+//             // cout << "\n\n\tTO DEPOSITE AMOUNT ";
+//             cout << "\n\nEnter The amount to be Send : ";
+//             cin >> amount;
+
+//             accountSend.draw(amount);
+//             accountRec.deposit(amount);
+        
+
+//             long int pos1 = (-1) * (sizeof(Account));
+//             File.seekp(pos1, ios::cur);
+//             long int pos2 = (-1) * (sizeof(Account));
+//             File.seekp(pos2, ios::cur);
+
+//             File.write((char *)&accountSend, sizeof(Account));
+//             File.write((char *)&accountRec, sizeof(Account));
+//             cout << "\n\n\t Record Updated";
+
+//             find = true;
+//         }
+//     }
+//     File.close();
+
+//     if (find == false)
+//     {
+//         cout << "\n\t\t Record Not Found !!!";
+//     }
+
+// }
+
+//=================================== FUNCTION : 8 ===========================================
+
+bool login_customer(int cinNumPass, int cinNum)
 {
     bool login{false};
-    int accNumber;
+    int cstPassword;
+    int cstNumber;
 
-    accNumber = cinNum;
+    cstPassword = cinNumPass;
+    cstNumber = cinNum;
 
     // cout << "Enter your Account Number : ";
     // cin >> accNumber;
 
-    Customer account;
+    Customer customer;
 
     ifstream inFile("../Data/Customer.dat");
-    while (inFile.read((char *)&account, sizeof(Customer)))
+    while (inFile.read((char *)&customer, sizeof(Customer)))
     {
-        if (account.get_Cnumber() == accNumber)
+        if ((customer.get_Cpassword() == cstPassword) && (customer.get_Cnumber() == cstNumber))
         {
             login = true;
             break;
         }
+        
     }
 
     if (login == true)

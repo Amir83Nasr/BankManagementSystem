@@ -17,14 +17,19 @@ using namespace std;
 class Employee : public Customer
 {
 protected:
-    string Ename;
+    char Ename[31];
     int Enumber;
+    int Epassword;
 
 public:
-    int get_Enumber()
-    {
-        return Enumber;
-    }
+    void create_employee(int Enum);
+    void show_employee();
+    void modify();
+    void report();
+
+    int get_Enumber();
+    int get_Epassword();
+
 };
 
 //===============================================
