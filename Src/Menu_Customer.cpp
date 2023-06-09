@@ -18,6 +18,7 @@ void menu_customer(int cinNum)
 
     char input;
     int num;
+    int actNum;
 
     int cstNumber = cinNum;
 
@@ -28,12 +29,12 @@ void menu_customer(int cinNum)
         cout << endl;
         cout << "\n\n\n\t MENU : CUSTOMER";
 
-        cout << "\n\n\t1) Depsit Amount                    --                  Afzayesh Vajh (1";
-        cout << "\n\n\t2) Withdraw Amount                  --                  Bardasht Vajh (2";
-        cout << "\n\n\t3) Make Transaction                 --                  Enteghal Vajh (3";
-        cout << "\n\n\t4) Balance Enquiry                  --                  Estelam Mojodi (4";
-        cout << "\n\n\t5) Modify The Account               --                  Eslah Hesab (5";
-        cout << "\n\n\t6) Choose account                   --                  Entekhab Hesab (6";
+        // cout << "\n\n\t1) Depsit Amount                    --                  Afzayesh Vajh (1"; //? for the employee. rather not put it in admin
+        // cout << "\n\n\t2) Withdraw Amount                  --                  Bardasht Vajh (2";
+        // cout << "\n\n\t3) Make Transaction                 --                  Enteghal Vajh (3";  //? for the user in account section
+        // cout << "\n\n\t4) Balance Enquiry                  --                  Estelam Mojodi (4"; //? for the user in account section
+        cout << "\n\n\t5) Modify The user                     --                  Eslah Karbar (5";
+        cout << "\n\n\t6) Choose account                      --                  Entekhab Hesab (6";
 
         cout << "\n\n\t------------------------------------------------------------------------------";
 
@@ -46,31 +47,35 @@ void menu_customer(int cinNum)
         switch (input)
         {
         case '1':
-            deposit_withdraw(cstNumber, 1);
-            break;
+            // deposit_withdraw(cstNumber, 1);
+            // break;
 
         case '2':
-            deposit_withdraw(cstNumber, 2);
-            break;
+        //     deposit_withdraw(cstNumber, 2);
+        //     break;
 
         case '3':
             
-            break;
+            // break;
 
         case '4':
-            display_one_customer(cstNumber);
-            break;
+            // display_one_customer(cstNumber);
+            // break;
 
         case '5':
             modify_customer(cstNumber);
             break;
 
         case '6':
-            
+            display_all_account();
+            cout << "\n\n\tEnter the Account number : ";
+            cin >> actNum;
+            menu_account(actNum);
+            break;
 
         case '0':
-            system("clear");
-            // system("CLS"); //? Clear : in Windows
+            //system("clear");
+            system("CLS"); //? Clear : in Windows
 
             cout << "\n\n\t\t\t\tWelcome Back to Main Menu\n\n";
 
@@ -86,11 +91,11 @@ void menu_customer(int cinNum)
         cout << "\n\n"
              << "==============================================" << endl;
 
-        system("read -n1 -p ' ' key"); //? Pause : in MacOS
-        // system("pause"); //? Pause : in Windows
+        //system("read -n1 -p ' ' key"); //? Pause : in MacOS
+        system("pause"); //? Pause : in Windows
 
-        system("clear"); //? Clear : in MacOS
-        // system("CLS"); //? Clear : in Windows
+        //system("clear"); //? Clear : in MacOS
+        system("CLS"); //? Clear : in Windows
 
     } while (input != '0');
 }

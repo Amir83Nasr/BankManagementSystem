@@ -54,7 +54,7 @@ void Employee::modify()
 void Employee::report()
 {
     // "  Account no.           Name   "
-    cout << "  " << left << setw(14) << Enumber << setw(26) << Ename << setw(12) << Epassword << endl;
+    cout << "  " << left << setw(14) << Enumber << setw(31) << Ename << setw(12) << Epassword << endl;
 }
 
 
@@ -173,7 +173,7 @@ void modify_employee(int empNumber)
             cout << "\n\nEnter The New Details of Employee : " << endl;
             employee.Employee::modify();
 
-            long int pos = (-1) * (sizeof(Employee));
+            long long int pos = (-1) * (sizeof(Employee));
             File.seekp(pos, ios::cur);
 
             File.write((char *)&employee, sizeof(Employee));
@@ -273,9 +273,9 @@ void display_all_employee()
     }
 
     cout << "\n\n\t\tEmployee LIST\n\n";
-    cout << "=======================================\n";
-    cout << "  Account no.           Name    \n";
-    cout << "========================================\n";
+    cout << "======================================================\n";
+    cout << "  Employee no.           Name            Password\n";
+    cout << "======================================================\n";
 
     while (inFile.read((char *)&employee, sizeof(Employee)))
     {

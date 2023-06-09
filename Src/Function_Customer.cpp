@@ -18,6 +18,8 @@ void Customer::create_customer(int Cnum)
 
     Cnumber = Cnum;
 
+    int Anum = generateRandomNumber();
+
     cout << "\nEnter The Name of The Customer : ";
     cin.ignore();
     cin.get(Cname, 30);
@@ -26,8 +28,7 @@ void Customer::create_customer(int Cnum)
     cout << "\nEnter the password of the Customer : ";
     cin >> Cpassword;
 
-    cout << "\nEnter The Balance : ";
-    cin >> Cbalance;
+    create_account(Anum);
 
     cout << "\n\n ===== Customer Created ... =====";
 }
@@ -39,7 +40,9 @@ void Customer::show_customer()
 
     cout << "\nCustomer Holder Name : " << Cname << endl;
 
-    cout << "\nBalance amount : " << Cbalance << endl;
+    show_account();
+
+    // cout << "\nBalance amount : " << Cbalance << endl;
 
     cout << "\n------------------------------------------\n";
 }
@@ -59,20 +62,20 @@ void Customer::modify()
     cin >> Cbalance;
 }
 
-void Customer::deposit(int x)
+void Account::deposit(int x)
 {
-    Cbalance += x;
+    Abalance += x;
 }
 
-void Customer::draw(int x)
+void Account::draw(int x)
 {
-    Cbalance -= x;
+    Abalance -= x;
 }
 
 void Customer::report()
 {
-    // "  Account no.           Name             Balance "
-        cout << "  " << left << setw(14) << Cnumber << setw(26) << Cname << setw(12) << Cbalance << setw(12) << Cpassword << endl;
+    // "  Customer no.           Name             Pass "
+        cout << "  " << left << setw(14) << Cnumber << setw(26) << Cname << setw(12) << Cpassword << endl;
 }
 
 //--------------- Get & Set -----------------
@@ -82,10 +85,10 @@ int Customer::get_Cnumber()
     return Cnumber;
 }
 
-int Customer::get_Cbalance()
-{
-    return Cbalance;
-}
+// int Customer::get_Cbalance()
+// {
+//     return Cbalance;
+// }
 
 int Customer::get_Cpassword()
 {
@@ -158,7 +161,7 @@ void modify_customer(int cstNumber)
             cout << "\n\nEnter The New Details of Customer : " << endl;
             customer.modify();
 
-            long int pos = (-1) * (sizeof(Customer));
+            long long int pos = (-1) * (sizeof(Customer));
             File.seekp(pos, ios::cur);
 
             File.write((char *)&customer, sizeof(Customer));
@@ -258,9 +261,9 @@ void display_all_customer()
     }
 
     cout << "\n\n\t\tACCOUNT HOLDER LIST\n\n";
-    cout << "==============================================================\n";
-    cout << "  Account no.           Name             Balance        Pass\n";
-    cout << "==============================================================\n";
+    cout << "=====================================================\n";
+    cout << "  Customer no.           Name             Balance\n";
+    cout << "======================================================\n";
 
     while (inFile.read((char *)&customer, sizeof(Customer)))
     {
@@ -271,27 +274,27 @@ void display_all_customer()
 
 //=================================== FUNCTION : 6 ===========================================
 
-void deposit_withdraw(int cstNumber, int option)
+void deposit_withdraw(int actNumber, int option)
 {
     int amount{};
 
     bool find = false;
 
-    Customer customer;
+    Account account;
 
     fstream File;
-    File.open("../Data/Customer.dat", ios::binary | ios::in | ios::out);
+    File.open("../Data/Account.dat", ios::binary | ios::in | ios::out);
     if (!File)
     {
         cout << "File could not be open !! Press any Key...";
         return;
     }
 
-    while (File.read((char *)&customer, sizeof(Customer)) && find == false)
+    while (File.read((char *)&account, sizeof(Account)) && find == false)
     {
-        if (customer.get_Cnumber() == cstNumber)
+        if (account.get_Anumber() == actNumber)
         {
-            customer.show_customer();
+            account.show_account();
 
             if (option == 1)
             {
@@ -299,7 +302,7 @@ void deposit_withdraw(int cstNumber, int option)
                 cout << "\n\nEnter The amount to be (deposited) : ";
                 cin >> amount;
 
-                customer.deposit(amount);
+                account.deposit(amount);
             }
 
             if (option == 2)
@@ -308,13 +311,13 @@ void deposit_withdraw(int cstNumber, int option)
                 cout << "\n\nEnter The amount to be (withdraw) : ";
                 cin >> amount;
 
-                customer.draw(amount);
+                account.draw(amount);
             }
 
-            long int pos = (-1) * (sizeof(Customer));
+            long long int pos = (-1) * (sizeof(Customer));
             File.seekp(pos, ios::cur);
 
-            File.write((char *)&customer, sizeof(Customer));
+            File.write((char *)&account, sizeof(Account));
             cout << "\n\n\t Record Updated";
 
             find = true;
@@ -329,6 +332,60 @@ void deposit_withdraw(int cstNumber, int option)
 }
 
 //=================================== FUNCTION : 7 ===========================================
+
+// void transaction(int AnumSend, int AnumRec)
+// {
+//     int amount{};
+
+//     bool find = false;
+
+//     Account accountSend;
+//     Account accountRec;
+
+//     fstream File;
+//     File.open("../Data/Account.dat", ios::binary | ios::in | ios::out);
+//     if (!File)
+//     {
+//         cout << "File could not be open !! Press any Key...";
+//         return;
+//     }
+
+//     while (File.read((char *)&accountSend, sizeof(Account)) && File.read((char *)&accountRec, sizeof(Account)) && find == false)
+//     {
+//         if (accountSend.get_Anumber() == AnumSend && accountRec.get_Anumber() == AnumRec)
+//         {
+//             accountSend.show_account();
+
+//             // cout << "\n\n\tTO DEPOSITE AMOUNT ";
+//             cout << "\n\nEnter The amount to be Send : ";
+//             cin >> amount;
+
+//             accountSend.draw(amount);
+//             accountRec.deposit(amount);
+        
+
+//             long int pos1 = (-1) * (sizeof(Account));
+//             File.seekp(pos1, ios::cur);
+//             long int pos2 = (-1) * (sizeof(Account));
+//             File.seekp(pos2, ios::cur);
+
+//             File.write((char *)&accountSend, sizeof(Account));
+//             File.write((char *)&accountRec, sizeof(Account));
+//             cout << "\n\n\t Record Updated";
+
+//             find = true;
+//         }
+//     }
+//     File.close();
+
+//     if (find == false)
+//     {
+//         cout << "\n\t\t Record Not Found !!!";
+//     }
+
+// }
+
+//=================================== FUNCTION : 8 ===========================================
 
 bool login_customer(int cinNumPass, int cinNum)
 {

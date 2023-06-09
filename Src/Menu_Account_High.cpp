@@ -12,12 +12,11 @@ using namespace std;
 
 //=================================== MENU : ACCOUNT =======================================
 
-void menu_account(int actNum)
+void menu_account_high(int actNum)
 {
     char input;
-    int actNumber = actNum;
+    int actNumber;
     int num;
-    int actNumberRec;
 
     do
     {
@@ -26,15 +25,14 @@ void menu_account(int actNum)
         cout << endl;
         cout << "\n\n\n\t MENU : Account";
 
-        cout << "\n\n\t1) Withdraw                         --                  Bardasht (1";
+        cout << "\n\n\t1) Deposit                          --                  Afzayesh Seporde (1";
         cout << "\n\n\t2) Make Transaction                 --                  Tarakonesh (2";
         cout << "\n\n\t3) Transaction List                 --                  List Tarakonesh Ha (3";
-        // cout << "\n\n\t4) Balance Enquiry                  --                  Baghimande (4";
 
         cout << "\n\n\t------------------------------------------------------------------------------";
 
         cout << "\n\n\t0) RETURN                           --                  BAZGASHT (0";
-        cout << "\n\n\n\tSelect Your Option (0-4) : ";
+        cout << "\n\n\n\tSelect Your Option (0-3) : ";
 
         cin >> input;
         cout << endl;
@@ -42,20 +40,16 @@ void menu_account(int actNum)
         switch (input)
         {
         case '1':
-            deposit_withdraw(actNumber, 2);
+            // deposit_withdraw();
             break;
 
         case '2':
-            transaction(actNumber, actNumberRec);
+
             break;
 
         case '3':
 
             break;
-
-        case '4':
-            
-            // break;
 
         case '0':
             //system("clear");
@@ -74,11 +68,11 @@ void menu_account(int actNum)
         cout << "\n\n"
              << "==============================================" << endl;
 
-        system("read -n1 -p ' ' key"); //? Pause : in MacOS
-        // system("pause"); //? Pause : in Windows
+        //system("read -n1 -p ' ' key"); //? Pause : in MacOS
+        system("pause"); //? Pause : in Windows
 
-        system("clear");
-        // system("CLS"); //? Clear : in Windows
+        //system("clear");
+        system("CLS"); //? Clear : in Windows
 
     } while (input != '0');
 }
