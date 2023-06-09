@@ -28,7 +28,7 @@ void Customer::create_customer(int Cnum)
     cout << "\nEnter the password of the Customer : ";
     cin >> Cpassword;
 
-    create_account(Anum);
+    write_account(Cname);
 
     cout << "\n\n ===== Customer Created ... =====";
 }
@@ -58,8 +58,8 @@ void Customer::modify()
     cout << "\n\nEnter the new Password for the customer : ";
     cin >> Cpassword;
     // getline(cin,Cname);
-    cout << "\nEnter The Amount : ";
-    cin >> Cbalance;
+    // cout << "\nEnter The Amount : ";
+    // cin >> Cbalance;
 }
 
 void Account::deposit(int x)
@@ -93,6 +93,11 @@ int Customer::get_Cnumber()
 int Customer::get_Cpassword()
 {
     return Cpassword;
+}
+
+const char* Customer::get_Cname() const
+{
+    return Cname;
 }
 
 //=================================== FUNCTION : 1 ===========================================

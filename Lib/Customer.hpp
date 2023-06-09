@@ -21,7 +21,7 @@ protected:
     int Cnumber;
     int Cpassword;
 
-    double Cbalance;
+    // double Cbalance;
 
 public:
     void create_customer(int Cpass);
@@ -88,12 +88,14 @@ public:
     //     return Cnumber;
     // }
 
-    int get_Cbalance();
+    // int get_Cbalance();
     // {
     //     return Cbalance;
     // }
 
     int get_Cpassword();
+
+    const char* get_Cname() const;
 };
 
 //===============================================

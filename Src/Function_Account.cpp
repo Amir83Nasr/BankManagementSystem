@@ -2,12 +2,15 @@
 
 #include "../Lib/Function.hpp"
 
+#include "../Lib/Customer.hpp"
+
 #include "../Lib/Account.hpp"
 
 #include <iostream>
 #include <string>
 #include <fstream>
 #include <vector>
+#include <cstring>
 
 #include <random>
 #include <algorithm>
@@ -15,6 +18,18 @@
 using namespace std;
 
 //=================================== CLASS ===========================================
+void Account::set_Aname(const char* name)
+{
+    for (size_t i = 0; i < strlen(name); i++)
+    {
+        Aname[i] = name[i];
+    }
+    
+}
+const char* Account::get_Aname() const
+{
+    return Aname;
+}
 
 int Account::get_Abalance()
 {
@@ -59,9 +74,10 @@ int generateRandomNumber()
     return number;
 }
 
-void Account::create_account(int Anum)
+void Account::create_account(int Anum, const char* name)
 {
     Anumber = Anum;
+    set_Aname(name);
 
     cout << "\nEnter The Balance : ";
     cin >> Abalance;
@@ -71,7 +87,7 @@ void Account::create_account(int Anum)
 
 //=================================== FUNCTION : 2 ===========================================
 
-void write_account()
+void write_account(const char* name)
 {
     bool find = false;
 
@@ -99,7 +115,7 @@ void write_account()
     {
         Account newAccount;
 
-        newAccount.create_account(actNumber);
+        newAccount.create_account(actNumber, name);
         outFile.write((char *)&newAccount, sizeof(Account));
         cout << "\n\nYour Account Number is : " << actNumber;
     }
@@ -107,17 +123,18 @@ void write_account()
     {
         cout << "\n\nAccount number exist ..." << endl;
     }
-
     outFile.close();
 }
 
 //=================================== FUNCTION : 3 ===========================================
 
-void display_all_account()
+void display_all_account(const char* name)
 {
     Account account;
+    Customer customer;
 
     ifstream inFile("../Data/Account.dat", ios::binary);
+    ifstream inFile2("../Data/Customer.dat", ios::binary);
     if (!inFile)
     {
         cout << "File could not be open !! Press any Key...";
@@ -129,9 +146,13 @@ void display_all_account()
     cout << "  Account no.                    Balance    \n";
     cout << "============================================\n";
 
-    while (inFile.read((char *)&account, sizeof(Account)))
+    while (inFile.read((char *)&account, sizeof(Account)) && inFile2.read((char *)&customer, sizeof(Customer)))
     {
-        account.report_acc();
+        if (customer.get_Cname() == account.get_Aname())
+        {
+            account.report_acc();
+        }
+        
     }
     inFile.close();
 }

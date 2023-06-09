@@ -88,7 +88,7 @@ bool login_employee(int cinNumPass, int cinNum)
     ifstream inFile("../Data/Employee.dat");
     while (inFile.read((char *)&employee, sizeof(Employee)))
     {
-        if ((employee.get_Enumber() == empNumber) && (employee.get_Cpassword() == empNumPassword))
+        if ((employee.get_Enumber() == empNumber) && (employee.get_Epassword() == empNumPassword))
         {
             login = true;
             break;
