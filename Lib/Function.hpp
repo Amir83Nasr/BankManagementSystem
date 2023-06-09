@@ -46,4 +46,6 @@ void deposit_withdraw(int, int);
 
 int generateRandomNumber();
 
+void write_account();
+
 //===============================================

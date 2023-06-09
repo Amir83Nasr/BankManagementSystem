@@ -65,12 +65,12 @@ public:
 
     //------------------------------------------------------------------
 
-    void deposit(int x);
+    // void deposit(int x);
     // { // function to accept amount and add to balance amount
     //     Cbalance += x;
     // }
 
-    void draw(int x);
+    // void draw(int x);
     // { // function to accept amount and subtract from balance amount
     //     Cbalance -= x;
     // }

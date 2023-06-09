@@ -12,7 +12,7 @@ using namespace std;
 
 //=================================== MENU : ACCOUNT =======================================
 
-void menu_account(int actNum)
+void menu_account_high(int actNum)
 {
     char input;
     int actNumber;
@@ -25,7 +25,7 @@ void menu_account(int actNum)
         cout << endl;
         cout << "\n\n\n\t MENU : Account";
 
-        cout << "\n\n\t1) Withdraw                         --                  Bardasht (1";
+        cout << "\n\n\t1) Deposit                          --                  Afzayesh Seporde (1";
         cout << "\n\n\t2) Make Transaction                 --                  Tarakonesh (2";
         cout << "\n\n\t3) Transaction List                 --                  List Tarakonesh Ha (3";
 
@@ -40,7 +40,7 @@ void menu_account(int actNum)
         switch (input)
         {
         case '1':
-            deposit_withdraw(actNumber, 2);
+            // deposit_withdraw();
             break;
 
         case '2':
