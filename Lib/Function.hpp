@@ -48,4 +48,8 @@ int generateRandomNumber();
 
 void write_account();
 
+void display_all_account();
+
+void transaction(int, int);
+
 //===============================================

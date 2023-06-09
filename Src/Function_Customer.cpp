@@ -40,7 +40,9 @@ void Customer::show_customer()
 
     cout << "\nCustomer Holder Name : " << Cname << endl;
 
-    cout << "\nBalance amount : " << Cbalance << endl;
+    show_account();
+
+    // cout << "\nBalance amount : " << Cbalance << endl;
 
     cout << "\n------------------------------------------\n";
 }
@@ -159,7 +161,7 @@ void modify_customer(int cstNumber)
             cout << "\n\nEnter The New Details of Customer : " << endl;
             customer.modify();
 
-            long int pos = (-1) * (sizeof(Customer));
+            long long int pos = (-1) * (sizeof(Customer));
             File.seekp(pos, ios::cur);
 
             File.write((char *)&customer, sizeof(Customer));
@@ -259,9 +261,9 @@ void display_all_customer()
     }
 
     cout << "\n\n\t\tACCOUNT HOLDER LIST\n\n";
-    cout << "==============================================================\n";
-    cout << "  Customer no.           Name             Balance        Pass\n";
-    cout << "==============================================================\n";
+    cout << "=====================================================\n";
+    cout << "  Customer no.           Name             Balance\n";
+    cout << "======================================================\n";
 
     while (inFile.read((char *)&customer, sizeof(Customer)))
     {
@@ -312,7 +314,7 @@ void deposit_withdraw(int actNumber, int option)
                 account.draw(amount);
             }
 
-            long int pos = (-1) * (sizeof(Customer));
+            long long int pos = (-1) * (sizeof(Customer));
             File.seekp(pos, ios::cur);
 
             File.write((char *)&account, sizeof(Account));
@@ -331,57 +333,57 @@ void deposit_withdraw(int actNumber, int option)
 
 //=================================== FUNCTION : 7 ===========================================
 
-void transaction(int AnumSend, int AnumRec)
-{
-    int amount{};
+// void transaction(int AnumSend, int AnumRec)
+// {
+//     int amount{};
 
-    bool find = false;
+//     bool find = false;
 
-    Account accountSend;
-    Account accountRec;
+//     Account accountSend;
+//     Account accountRec;
 
-    fstream File;
-    File.open("../Data/Account.dat", ios::binary | ios::in | ios::out);
-    if (!File)
-    {
-        cout << "File could not be open !! Press any Key...";
-        return;
-    }
+//     fstream File;
+//     File.open("../Data/Account.dat", ios::binary | ios::in | ios::out);
+//     if (!File)
+//     {
+//         cout << "File could not be open !! Press any Key...";
+//         return;
+//     }
 
-    while (File.read((char *)&accountSend, sizeof(Account)) && File.read((char *)&accountRec, sizeof(Account)) && find == false)
-    {
-        if (accountSend.get_Anumber() == AnumSend && accountRec.get_Anumber() == AnumRec)
-        {
-            accountSend.show_account();
+//     while (File.read((char *)&accountSend, sizeof(Account)) && File.read((char *)&accountRec, sizeof(Account)) && find == false)
+//     {
+//         if (accountSend.get_Anumber() == AnumSend && accountRec.get_Anumber() == AnumRec)
+//         {
+//             accountSend.show_account();
 
-            // cout << "\n\n\tTO DEPOSITE AMOUNT ";
-            cout << "\n\nEnter The amount to be Send : ";
-            cin >> amount;
+//             // cout << "\n\n\tTO DEPOSITE AMOUNT ";
+//             cout << "\n\nEnter The amount to be Send : ";
+//             cin >> amount;
 
-            accountSend.draw(amount);
-            accountRec.deposit(amount);
+//             accountSend.draw(amount);
+//             accountRec.deposit(amount);
         
 
-            long int pos1 = (-1) * (sizeof(Account));
-            File.seekp(pos1, ios::cur);
-            long int pos2 = (-1) * (sizeof(Account));
-            File.seekp(pos2, ios::cur);
+//             long int pos1 = (-1) * (sizeof(Account));
+//             File.seekp(pos1, ios::cur);
+//             long int pos2 = (-1) * (sizeof(Account));
+//             File.seekp(pos2, ios::cur);
 
-            File.write((char *)&accountSend, sizeof(Account));
-            File.write((char *)&accountRec, sizeof(Account));
-            cout << "\n\n\t Record Updated";
+//             File.write((char *)&accountSend, sizeof(Account));
+//             File.write((char *)&accountRec, sizeof(Account));
+//             cout << "\n\n\t Record Updated";
 
-            find = true;
-        }
-    }
-    File.close();
+//             find = true;
+//         }
+//     }
+//     File.close();
 
-    if (find == false)
-    {
-        cout << "\n\t\t Record Not Found !!!";
-    }
+//     if (find == false)
+//     {
+//         cout << "\n\t\t Record Not Found !!!";
+//     }
 
-}
+// }
 
 //=================================== FUNCTION : 8 ===========================================
 

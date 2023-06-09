@@ -15,8 +15,9 @@ using namespace std;
 void menu_account(int actNum)
 {
     char input;
-    int actNumber;
+    int actNumber = actNum;
     int num;
+    int actNumberRec;
 
     do
     {
@@ -28,11 +29,12 @@ void menu_account(int actNum)
         cout << "\n\n\t1) Withdraw                         --                  Bardasht (1";
         cout << "\n\n\t2) Make Transaction                 --                  Tarakonesh (2";
         cout << "\n\n\t3) Transaction List                 --                  List Tarakonesh Ha (3";
+        // cout << "\n\n\t4) Balance Enquiry                  --                  Baghimande (4";
 
         cout << "\n\n\t------------------------------------------------------------------------------";
 
         cout << "\n\n\t0) RETURN                           --                  BAZGASHT (0";
-        cout << "\n\n\n\tSelect Your Option (0-3) : ";
+        cout << "\n\n\n\tSelect Your Option (0-4) : ";
 
         cin >> input;
         cout << endl;
@@ -44,12 +46,16 @@ void menu_account(int actNum)
             break;
 
         case '2':
-
+            transaction(actNumber, actNumberRec);
             break;
 
         case '3':
 
             break;
+
+        case '4':
+            
+            // break;
 
         case '0':
             //system("clear");

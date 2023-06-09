@@ -11,7 +11,7 @@ using namespace std;
 
 //===============================================
 
-class Account : public Customer
+class Account
 {
 protected:
     int Anumber;
@@ -23,6 +23,7 @@ public:
     void show_account();
     void deposit(int x);
     void draw(int x);
+    void report_acc();
 };
 
 //===============================================
