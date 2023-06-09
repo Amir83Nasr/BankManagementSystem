@@ -7,8 +7,9 @@
 #include <iostream>
 #include <string>
 #include <fstream>
-#include <random>
 #include <vector>
+
+#include <random>
 #include <algorithm>
 
 using namespace std;
@@ -40,12 +41,15 @@ void Account::show_account()
 
 void Account::report_acc()
 {
-    // "  Account no.           Balance"
+    //"============================================
+    //"  Account no.                    Balance    
+    //"============================================
     cout << "  " << left << setw(14) << Anumber << setw(12) << Abalance << endl;
 }
 
 //=================================== FUNCTION : 1 ===========================================
-int generateRandomNumber() {
+int generateRandomNumber()
+{
     std::random_device random;
     std::mt19937 gen(random());
     std::uniform_int_distribution<int> dist(1000, 9999);
@@ -122,7 +126,7 @@ void display_all_account()
 
     cout << "\n\n\t\tACCOUNT HOLDER LIST\n\n";
     cout << "============================================\n";
-    cout << "  Account no.               Balance     \n";
+    cout << "  Account no.                    Balance    \n";
     cout << "============================================\n";
 
     while (inFile.read((char *)&account, sizeof(Account)))
@@ -163,7 +167,6 @@ void transaction(int AnumSend, int AnumRec)
 
             accountSend.draw(amount);
             accountRec.deposit(amount);
-        
 
             long int pos1 = (-1) * (sizeof(Account));
             File.seekp(pos1, ios::cur);
@@ -183,11 +186,6 @@ void transaction(int AnumSend, int AnumRec)
     {
         cout << "\n\t\t Record Not Found !!!";
     }
-
 }
-
-
-
-
 
 //========================================================================================

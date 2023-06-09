@@ -66,12 +66,12 @@ void menu_employee(int cinNum)
             break;
 
         case '5':
-            
+
             break;
 
         case '0':
-            //system("clear");
-            system("CLS"); //? Clear : in Windows
+            system("clear");
+            // system("CLS"); //? Clear : in Windows
 
             cout << "\n\n\t\t\t\tWelcome Back to Main Menu\n\n";
 

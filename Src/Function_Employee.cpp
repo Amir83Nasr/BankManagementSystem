@@ -53,14 +53,14 @@ void Employee::modify()
 
 void Employee::report()
 {
-    // "  Account no.           Name   "
+    //"======================================================"
+    //"  Employee no.           Name            Password     "
+    //"======================================================"
     cout << "  " << left << setw(14) << Enumber << setw(31) << Ename << setw(12) << Epassword << endl;
 }
 
-
-
-
-int Employee::get_Enumber(){
+int Employee::get_Enumber()
+{
     return Enumber;
 }
 
@@ -283,4 +283,3 @@ void display_all_employee()
     }
     inFile.close();
 }
-

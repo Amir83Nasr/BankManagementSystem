@@ -52,8 +52,8 @@ void menu_account_high(int actNum)
             break;
 
         case '0':
-            //system("clear");
-            system("CLS"); //? Clear : in Windows
+            system("clear");
+            // system("CLS"); //? Clear : in Windows
 
             cout << "\n\n\t\t\t\tWelcome Back to Main Menu\n\n";
 
@@ -68,11 +68,11 @@ void menu_account_high(int actNum)
         cout << "\n\n"
              << "==============================================" << endl;
 
-        //system("read -n1 -p ' ' key"); //? Pause : in MacOS
-        system("pause"); //? Pause : in Windows
+        system("read -n1 -p ' ' key"); //? Pause : in MacOS
+        // system("pause"); //? Pause : in Windows
 
-        //system("clear");
-        system("CLS"); //? Clear : in Windows
+        system("clear");
+        // system("CLS"); //? Clear : in Windows
 
     } while (input != '0');
 }
