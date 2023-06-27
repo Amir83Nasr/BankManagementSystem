@@ -46,6 +46,8 @@ void menu_account(int actNum)
             break;
 
         case '2':
+            cout << "Enter the account number you want to wire money to: ";
+            cin >> actNumberRec;
             transaction(actNumber, actNumberRec);
             break;
 
