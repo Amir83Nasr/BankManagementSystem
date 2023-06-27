@@ -148,7 +148,7 @@ void display_all_account(char name[])
 
     while (inFile.read((char *)&account, sizeof(Account)) || inFile2.read((char *)&customer, sizeof(Customer)))
     {
-        if (customer.get_Cname() == account.get_Aname() == name)
+        if (customer.get_Cname() == account.get_Aname())
         {
             account.report_acc();
         }
