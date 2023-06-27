@@ -131,9 +131,9 @@ void write_account(const char *name)
 void display_all_account(const char *name)
 {
     Account account;
-    Customer customer;
 
     ifstream inFile("../Data/Account.dat", ios::binary);
+<<<<<<< HEAD
     ifstream inFile2("../Data/Customer.dat", ios::binary);
 <<<<<<< HEAD
     
@@ -141,6 +141,9 @@ void display_all_account(const char *name)
 =======
     if (!inFile || !inFile2)
 >>>>>>> 99c36c94ddcfd51ca5d57a70bc167cd47f3c3e49
+=======
+    if (!inFile)
+>>>>>>> d790e02bb850ea03e8aa623000db14fac9273d21
     {
         cout << "File could not be opened! Press any key...";
         return;
@@ -154,16 +157,13 @@ void display_all_account(const char *name)
     // Read from both files independently
     while (inFile.read((char*)&account, sizeof(Account)))
     {
-        inFile2.read((char*)&customer, sizeof(Customer));
-
-        if (strcmp(customer.get_Cname(), name) == 0 && strcmp(account.get_Aname(), name) == 0)
+        if(strcmp(account.get_Aname(), name) == 0)
         {
-            account.report_acc();
+        account.report_acc();
         }
     }
 
     inFile.close();
-    inFile2.close();
 }
 
 
