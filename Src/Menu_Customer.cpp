@@ -79,6 +79,11 @@ void menu_customer(int cinNum)
             display_all_account(name);
             cout << "\n\n\tEnter the Account number : ";
             cin >> actNum;
+            if (login_account(actNum) == false)
+            {
+                break;
+            }
+            
             menu_account(actNum);
             break;
 

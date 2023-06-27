@@ -39,6 +39,7 @@ void menu_admin()
         cout << "\n\n\t6) Delete Customer                  --                  Hazf Moshtari (6";
         cout << "\n\n\t7) One Customer List                --                  List Yek Moshtari (7";
         cout << "\n\n\t8) All Customers List               --                  List Tamam Moshtari (8";
+        cout << "\n\n\t9) All Account List                 --                  List Tamam Account (9)";
 
         cout << "\n\n\t------------------------------------------------------------------------------";
 
@@ -90,6 +91,9 @@ void menu_admin()
             display_all_customer();
             break;
 
+        case '9':
+            display_all_account_all();
+            break;
         case '0':
             // system("clear");
             system("CLS"); //? Clear : in Windows

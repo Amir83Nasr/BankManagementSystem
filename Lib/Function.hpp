@@ -52,4 +52,8 @@ void display_all_account(const char*);
 
 void transaction(int, int);
 
+bool login_account(int accNum);
+
+void display_all_account_all();
+
 //===============================================

@@ -58,7 +58,7 @@ void Account::report_acc()
     //"============================================
     //"  Account no.                    Balance
     //"============================================
-    cout << "  " << left << setw(14) << Anumber << setw(12) << Abalance << endl;
+    cout << "  " << left << setw(14) << Aname << setw(20) << Anumber << setw(12) << Abalance << endl;
 }
 
 //=================================== FUNCTION : 1 ===========================================
@@ -135,10 +135,14 @@ void display_all_account(const char *name)
 
     ifstream inFile("../Data/Account.dat", ios::binary);
     ifstream inFile2("../Data/Customer.dat", ios::binary);
+<<<<<<< HEAD
     
     if (!inFile)
+=======
+    if (!inFile || !inFile2)
+>>>>>>> 99c36c94ddcfd51ca5d57a70bc167cd47f3c3e49
     {
-        cout << "File could not be open !! Press any Key...";
+        cout << "File could not be opened! Press any key...";
         return;
     }
 
@@ -147,12 +151,43 @@ void display_all_account(const char *name)
     cout << "  Account no.                    Balance    \n";
     cout << "============================================\n";
 
-    while (inFile.read((char *)&account, sizeof(Account)) || inFile2.read((char *)&customer, sizeof(Customer)))
+    // Read from both files independently
+    while (inFile.read((char*)&account, sizeof(Account)))
     {
+        inFile2.read((char*)&customer, sizeof(Customer));
+
         if (strcmp(customer.get_Cname(), name) == 0 && strcmp(account.get_Aname(), name) == 0)
         {
             account.report_acc();
         }
+    }
+
+    inFile.close();
+    inFile2.close();
+}
+
+
+//=================================== FUNCTION : 3 ===========================================
+
+void display_all_account_all()
+{
+    Account account;
+
+    ifstream inFile("../Data/Account.dat", ios::binary);
+    if (!inFile)
+    {
+        cout << "File could not be open !! Press any Key...";
+        return;
+    }
+
+    cout << "\n\n\t\tACCOUNT HOLDER LIST\n\n";
+    cout << "=====================================================\n";
+    cout << "  Name           Account num.             Balance\n";
+    cout << "======================================================\n";
+
+    while (inFile.read((char *)&account, sizeof(Account)))
+    {
+        account.report_acc();
     }
     inFile.close();
 }
@@ -218,6 +253,44 @@ void transaction(int AnumSend, int AnumRec)
     if (find == false)
     {
         cout << "\n\t\t Record Not Found !!!";
+    }
+}
+
+//=================================== FUNCTION : 8 ===========================================
+
+bool login_account(int accNum)
+{
+    bool login{false};
+    int number;
+    
+    number = accNum;
+
+
+    // cout << "Enter your Account Number : ";
+    // cin >> accNumber;
+
+    Account account;
+
+    ifstream inFile("../Data/Account.dat");
+    while (inFile.read((char *)&account, sizeof(Account)))
+    {
+        if (account.get_Anumber() == number)
+        {
+            login = true;
+            break;
+        }
+        
+    }
+
+    if (login == true)
+    {
+        cout << "\n\t\tLogin was successful ...";
+        return true;
+    }
+    else
+    {
+        cout << "\n\t\tAccount Number Not Found !!!\n";
+        return false;
     }
 }
 
