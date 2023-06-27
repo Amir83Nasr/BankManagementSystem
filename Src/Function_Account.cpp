@@ -135,6 +135,7 @@ void display_all_account(const char *name)
 
     ifstream inFile("../Data/Account.dat", ios::binary);
     ifstream inFile2("../Data/Customer.dat", ios::binary);
+    
     if (!inFile)
     {
         cout << "File could not be open !! Press any Key...";
