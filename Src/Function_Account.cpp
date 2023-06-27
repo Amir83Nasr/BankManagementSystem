@@ -128,7 +128,7 @@ void write_account(const char *name)
 
 //=================================== FUNCTION : 3 ===========================================
 
-void display_all_account(char name[])
+void display_all_account(const char* name)
 {
     Account account;
     Customer customer;
@@ -148,7 +148,7 @@ void display_all_account(char name[])
 
     while (inFile.read((char *)&account, sizeof(Account)) || inFile2.read((char *)&customer, sizeof(Customer)))
     {
-        if (customer.get_Cname() == account.get_Aname())
+        if (strcmp(customer.get_Cname(), name) == 0 && strcmp(account.get_Aname(), name) == 0)
         {
             account.report_acc();
         }
