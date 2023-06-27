@@ -105,6 +105,7 @@ void write_account(const char* name)
     {
         if (account.get_Anumber() == actNumber)
             find = true;
+            break;
     }
     inFile.close();
 
