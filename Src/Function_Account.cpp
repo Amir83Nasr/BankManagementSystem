@@ -176,7 +176,7 @@ void transaction(int AnumSend, int AnumRec)
 
     while (!inFile.eof() && find == false)
     {
-        if (accountSend.Anumber() == AnumSend || accountRec.Anumber() == AnumRec)
+        if (accountSend.get_Anumber() == AnumSend || accountRec.get_Anumber() == AnumRec)
         {
             find = true;
             break;
@@ -185,7 +185,7 @@ void transaction(int AnumSend, int AnumRec)
     inFile.close();
 
     fstream outFile("../Data/Account.dat", ios::binary | ios::out);
-    while (!outFile.efo() && find == true)
+    while (!outFile.eof() && find == true)
     {
         accountSend.show_account();
 
@@ -197,8 +197,8 @@ void transaction(int AnumSend, int AnumRec)
             accountSend.draw(amount);
 
             long int pos1 = (-1) * (sizeof(Account));
-            File.seekp(pos1, ios::cur);
-            File.write((char *)&accountSend, sizeof(Account));
+            outFile.seekp(pos1, ios::cur);
+            outFile.write((char *)&accountSend, sizeof(Account));
         }
 
         if (accountRec.get_Anumber() == AnumRec)
@@ -206,8 +206,8 @@ void transaction(int AnumSend, int AnumRec)
             accountRec.deposit(amount);
 
             long int pos2 = (-1) * (sizeof(Account));
-            File.seekp(pos2, ios::cur);
-            File.write((char *)&accountRec, sizeof(Account));
+            outFile.seekp(pos2, ios::cur);
+            outFile.write((char *)&accountRec, sizeof(Account));
         }
 
         cout << "\n\n\t Record Updated";
