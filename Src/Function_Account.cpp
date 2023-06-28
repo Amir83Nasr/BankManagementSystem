@@ -209,7 +209,7 @@ void transaction(int AnumSend, int AnumRec)
         return;
     }
 
-    while (!inFile.read((char *)&accountSend, sizeof(Account)) && find == false)
+    while (inFile.read((char *)&accountSend, sizeof(Account)) && find == false && inFile.read((char *)&accountRec, sizeof(Account)))
     {
         if (accountSend.get_Anumber() == AnumSend && accountRec.get_Anumber() == AnumRec)
         {
@@ -246,6 +246,7 @@ void transaction(int AnumSend, int AnumRec)
         }
 
         cout << "\n\n\t Record Updated";
+        break;
     }
     outFile.close();
 
