@@ -275,7 +275,7 @@ void display_all_customer()
 
     cout << "\n\n\t\tACCOUNT HOLDER LIST\n\n";
     cout << "======================================================\n";
-    cout << "  Customer no.           Name             Balance\n";
+    cout << "  Customer no.           Name             Password\n";
     cout << "======================================================\n";
 
     while (inFile.read((char *)&customer, sizeof(Customer)))

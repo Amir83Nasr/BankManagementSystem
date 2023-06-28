@@ -67,7 +67,7 @@ void Account::report_acc()
 
 void Account::report_Cacc(int)
 {
-    cout << "  " << left << setw(23) << Anumber << setw(12) << Abalance << endl;
+    cout << "  " << left << setw(30) << Anumber << setw(12) << Abalance << endl;
 }
 //=================================== FUNCTION : 1 ===========================================
 int generateRandomNumber()
@@ -150,9 +150,9 @@ void display_all_account(int cstNumber)
         return;
     }
 
-    cout << "\n\n\t\tACCOUNTS HOLDER LIST\n\n";
+    cout << "\n\n\tACCOUNTS HOLDER LIST\n\n";
     cout << "============================================\n";
-    cout << "  Account no.                    Balance    \n";
+    cout << "  Account no.                   Balance    \n";
     cout << "============================================\n";
 
     while (inFile.read((char *)&account, sizeof(Account)))

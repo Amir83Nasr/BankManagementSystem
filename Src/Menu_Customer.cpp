@@ -19,7 +19,7 @@ void menu_customer(int cinNum)
     char input;
     int num;
     int actNum;
-    const char* name;
+    const char *name;
 
     int cstNumber = cinNum;
 
@@ -60,11 +60,11 @@ void menu_customer(int cinNum)
             // break;
 
         case '2':
-        //     deposit_withdraw(cstNumber, 2);
-        //     break;
+            //     deposit_withdraw(cstNumber, 2);
+            //     break;
 
         case '3':
-            
+
             // break;
 
         case '4':
@@ -83,8 +83,14 @@ void menu_customer(int cinNum)
             {
                 break;
             }
-            
-            menu_account(actNum);
+
+            system("read -n1 -p ' ' key"); //? Pause : in MacOS
+            // system("pause"); //? Pause : in Windows
+
+            system("clear"); //? Clear : in MacOS
+            // system("CLS"); //? Clear : in Windows
+
+            menu_account(actNum,cstNumber);
             break;
 
         case '0':

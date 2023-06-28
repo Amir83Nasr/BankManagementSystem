@@ -12,12 +12,13 @@ using namespace std;
 
 //=================================== MENU : ACCOUNT =======================================
 
-void menu_account(int actNum)
+void menu_account(int actNum, int cstNum)
 {
     char input;
     int actNumber = actNum;
     int num;
     int actNumberRec;
+    int cstNumber = cstNum;
 
     do
     {
@@ -56,7 +57,7 @@ void menu_account(int actNum)
             break;
 
         case '4':
-            
+
             // break;
 
         case '0':
@@ -65,7 +66,7 @@ void menu_account(int actNum)
 
             cout << "\n\n\t\t\t\tWelcome Back to Main Menu\n\n";
 
-            menu();
+            menu_customer(cstNumber);
             break;
 
         default:
