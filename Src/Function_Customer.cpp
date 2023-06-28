@@ -28,7 +28,7 @@ void Customer::create_customer(int Cnum)
     cout << "\nEnter the password of the Customer : ";
     cin >> Cpassword;
 
-    write_account(Cname);
+    write_account(Cname, Cnumber);
 
     cout << "\n\n ===== Customer Created ... =====";
 }
