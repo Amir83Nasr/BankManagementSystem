@@ -46,10 +46,14 @@ void deposit_withdraw(int, int);
 
 int generateRandomNumber();
 
-void write_account();
+void write_account(const char *, int);
 
-void display_all_account();
+void display_all_account(int);
 
 void transaction(int, int);
+
+bool login_account(int accNum);
+
+void display_all_account_all();
 
 //===============================================

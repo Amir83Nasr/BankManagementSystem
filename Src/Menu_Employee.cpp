@@ -19,6 +19,7 @@ void menu_employee(int cinNum)
 
     char input;
     int cstNumber;
+    int actNum;
 
     int empNumber = cinNum;
 
@@ -66,7 +67,11 @@ void menu_employee(int cinNum)
             break;
 
         case '5':
-
+            cout << "\n\n\tEnter The Customer Number : ";
+            cin >> cstNumber;
+            cout << "\n\n\tEnter The Account Number : ";
+            cin >> actNum;
+            menu_account(actNum,cstNumber);
             break;
 
         case '0':
@@ -84,7 +89,7 @@ void menu_employee(int cinNum)
         }
 
         cout << "\n\n"
-             << "==============================================" << endl;
+             << "======================================================" << endl;
 
         system("read -n1 -p ' ' key"); //? Pause : in MacOS
         // system("pause"); //? Pause : in Windows

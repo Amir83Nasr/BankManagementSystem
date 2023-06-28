@@ -17,15 +17,17 @@ using namespace std;
 
 //=================================== FUNCTION : 1 ===========================================
 
+const string Admin::admPassword = "Amir83Nasr";
+
 bool login_admin()
 {
+    Admin admin;
     string admNumber;
-    string admPassword{"Amir83Nasr"};
 
     cout << "\n\t\tEnter The Admin Password : ";
     cin >> admNumber;
 
-    if (admNumber == admPassword)
+    if (admNumber == admin.get_admPassword())
     {
         cout << "\n\t\tLogin was successful ...\n";
         return true;

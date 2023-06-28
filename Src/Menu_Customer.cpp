@@ -15,12 +15,21 @@ using namespace std;
 
 void menu_customer(int cinNum)
 {
-
+    Customer customer;
     char input;
     int num;
     int actNum;
+    const char *name;
 
     int cstNumber = cinNum;
+
+    fstream inFile("../Data/Customer.dat", ios::binary | ios::in);
+    while (inFile.read((char *)&customer, sizeof(Customer)))
+    {
+        if (customer.get_Cnumber() == cstNumber)
+            name = customer.get_Cname();
+    }
+    inFile.close();
 
     do
     {
@@ -51,11 +60,11 @@ void menu_customer(int cinNum)
             // break;
 
         case '2':
-        //     deposit_withdraw(cstNumber, 2);
-        //     break;
+            //     deposit_withdraw(cstNumber, 2);
+            //     break;
 
         case '3':
-            
+
             // break;
 
         case '4':
@@ -67,10 +76,21 @@ void menu_customer(int cinNum)
             break;
 
         case '6':
-            display_all_account();
+            display_all_account(cstNumber);
             cout << "\n\n\tEnter the Account number : ";
             cin >> actNum;
-            menu_account(actNum);
+            if (login_account(actNum) == false)
+            {
+                break;
+            }
+
+            system("read -n1 -p ' ' key"); //? Pause : in MacOS
+            // system("pause"); //? Pause : in Windows
+
+            system("clear"); //? Clear : in MacOS
+            // system("CLS"); //? Clear : in Windows
+
+            menu_account(actNum,cstNumber);
             break;
 
         case '0':
@@ -89,7 +109,7 @@ void menu_customer(int cinNum)
         }
 
         cout << "\n\n"
-             << "==============================================" << endl;
+             << "======================================================" << endl;
 
         system("read -n1 -p ' ' key"); //? Pause : in MacOS
         // system("pause"); //? Pause : in Windows

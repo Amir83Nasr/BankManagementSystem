@@ -50,6 +50,7 @@ void menu()
         switch (input)
         {
         case '1':
+            // login_admin();
             if (login_admin() == false)
             {
                 break;
@@ -60,6 +61,7 @@ void menu()
 
             system("clear"); //? Clear : in MacOS
             // system("CLS"); //? Clear : in Windows
+
             menu_admin();
             break;
 
@@ -70,6 +72,7 @@ void menu()
             cout << "\n\t\tEnter your password : ";
             cin >> pass;
 
+            // login_employee(pass, number);
             if (login_employee(pass, number) == false)
             {
                 break;
@@ -80,6 +83,7 @@ void menu()
 
             system("clear"); //? Clear : in MacOS
             // system("CLS"); //? Clear : in Windows
+
             menu_employee(number);
             break;
 
@@ -90,6 +94,7 @@ void menu()
             cout << "\n\t\tEnter your password : ";
             cin >> pass;
 
+            // login_customer(pass, number);
             if (login_customer(pass, number) == false)
             {
                 break;

@@ -42,6 +42,10 @@ void menu_admin()
 
         cout << "\n\n\t------------------------------------------------------------------------------";
 
+        cout << "\n\n\t9) All Account List                 --                  List Tamam Account (9)";
+
+        cout << "\n\n\t------------------------------------------------------------------------------";
+
         cout << "\n\n\t0) RETURN                           --                  BAZGASHT (0";
         cout << "\n\n\n\tSelect Your Option (0-8) : ";
 
@@ -68,7 +72,7 @@ void menu_admin()
 
         case '4':
             display_all_employee();
-            break;        
+            break;
 
         case '5':
             write_customer();
@@ -90,6 +94,9 @@ void menu_admin()
             display_all_customer();
             break;
 
+        case '9':
+            display_all_account_all();
+            break;
         case '0':
             system("clear");
             // system("CLS"); //? Clear : in Windows
@@ -105,7 +112,7 @@ void menu_admin()
         }
 
         cout << "\n\n"
-             << "==============================================" << endl;
+             << "======================================================" << endl;
 
         system("read -n1 -p ' ' key"); //? Pause : in MacOS
         // system("pause"); //? Pause : in Windows
