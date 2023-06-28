@@ -25,6 +25,11 @@ void Account::set_Aname(const char *name)
         Aname[i] = name[i];
     }
 }
+void Account::set_CAnumber(int CAnumber)
+{
+    this->CAnumber = CAnumber;
+}
+
 const char *Account::get_Aname() const
 {
     return Aname;
@@ -40,6 +45,11 @@ int Account::get_Anumber()
     return Anumber;
 }
 
+int Account::get_CAnumber()
+{
+    return CAnumber;
+}
+
 void Account::show_account()
 {
     // cout << "\nCustomer Number : " << Cnumber << endl;
@@ -47,20 +57,18 @@ void Account::show_account()
     // cout << "\nCustomer Holder Name : " << Cname << endl;
 
     cout << "\nAccount Number : " << Anumber << endl;
-
     cout << "\nBalance amount : " << Abalance << endl;
-
-    cout << "\n------------------------------------------\n";
 }
 
 void Account::report_acc()
 {
-    //"============================================
-    //"  Account no.                    Balance
-    //"============================================
-    cout << "  " << left << setw(14) << Aname << setw(20) << Anumber << setw(12) << Abalance << endl;
+    cout << "  " << left << setw(23) << Anumber << setw(18) << Aname << setw(12) << Abalance << endl;
 }
 
+void Account::report_Cacc(int)
+{
+    cout << "  " << left << setw(23) << Anumber << setw(12) << Abalance << endl;
+}
 //=================================== FUNCTION : 1 ===========================================
 int generateRandomNumber()
 {
@@ -86,7 +94,7 @@ void Account::create_account(int Anum, const char *name)
 
 //=================================== FUNCTION : 2 ===========================================
 
-void write_account(const char *name)
+void write_account(const char *name, int CAnumber)
 {
     bool find = false;
 
@@ -116,6 +124,8 @@ void write_account(const char *name)
         Account newAccount;
 
         newAccount.create_account(actNumber, name);
+        newAccount.set_CAnumber(CAnumber);
+
         outFile.write((char *)&newAccount, sizeof(Account));
         cout << "\n\nYour Account Number is : " << actNumber;
     }
@@ -128,44 +138,33 @@ void write_account(const char *name)
 
 //=================================== FUNCTION : 3 ===========================================
 
-void display_all_account(const char *name)
+void display_all_account(int cstNumber)
 {
     Account account;
 
     ifstream inFile("../Data/Account.dat", ios::binary);
-<<<<<<< HEAD
-    ifstream inFile2("../Data/Customer.dat", ios::binary);
-<<<<<<< HEAD
-    
+
     if (!inFile)
-=======
-    if (!inFile || !inFile2)
->>>>>>> 99c36c94ddcfd51ca5d57a70bc167cd47f3c3e49
-=======
-    if (!inFile)
->>>>>>> d790e02bb850ea03e8aa623000db14fac9273d21
     {
         cout << "File could not be opened! Press any key...";
         return;
     }
 
-    cout << "\n\n\t\tACCOUNT HOLDER LIST\n\n";
+    cout << "\n\n\t\tACCOUNTS HOLDER LIST\n\n";
     cout << "============================================\n";
     cout << "  Account no.                    Balance    \n";
     cout << "============================================\n";
 
-    // Read from both files independently
-    while (inFile.read((char*)&account, sizeof(Account)))
+    while (inFile.read((char *)&account, sizeof(Account)))
     {
-        if(strcmp(account.get_Aname(), name) == 0)
+        if (account.get_CAnumber() == cstNumber)
         {
-        account.report_acc();
+            account.report_Cacc(cstNumber);
         }
     }
 
     inFile.close();
 }
-
 
 //=================================== FUNCTION : 3 ===========================================
 
@@ -181,8 +180,8 @@ void display_all_account_all()
     }
 
     cout << "\n\n\t\tACCOUNT HOLDER LIST\n\n";
-    cout << "=====================================================\n";
-    cout << "  Name           Account num.             Balance\n";
+    cout << "======================================================\n";
+    cout << "  Account no.            Name            Balance\n";
     cout << "======================================================\n";
 
     while (inFile.read((char *)&account, sizeof(Account)))
@@ -262,9 +261,8 @@ bool login_account(int accNum)
 {
     bool login{false};
     int number;
-    
-    number = accNum;
 
+    number = accNum;
 
     // cout << "Enter your Account Number : ";
     // cin >> accNumber;
@@ -279,7 +277,6 @@ bool login_account(int accNum)
             login = true;
             break;
         }
-        
     }
 
     if (login == true)

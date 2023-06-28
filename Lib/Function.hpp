@@ -46,9 +46,9 @@ void deposit_withdraw(int, int);
 
 int generateRandomNumber();
 
-void write_account(const char*);
+void write_account(const char *);
 
-void display_all_account(const char*);
+void display_all_account(int);
 
 void transaction(int, int);
 

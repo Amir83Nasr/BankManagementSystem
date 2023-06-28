@@ -84,7 +84,7 @@ void menu_employee(int cinNum)
         }
 
         cout << "\n\n"
-             << "==============================================" << endl;
+             << "======================================================" << endl;
 
         system("read -n1 -p ' ' key"); //? Pause : in MacOS
         // system("pause"); //? Pause : in Windows

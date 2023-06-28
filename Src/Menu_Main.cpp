@@ -55,11 +55,11 @@ void menu()
                 break;
             }
 
-            //system("read -n1 -p ' ' key"); //? Pause : in MacOS
-            system("pause"); //? Pause : in Windows
+            system("read -n1 -p ' ' key"); //? Pause : in MacOS
+            // system("pause"); //? Pause : in Windows
 
-            //system("clear"); //? Clear : in MacOS
-            system("CLS"); //? Clear : in Windows
+            system("clear"); //? Clear : in MacOS
+            // system("CLS"); //? Clear : in Windows
             menu_admin();
             break;
 
@@ -75,11 +75,11 @@ void menu()
                 break;
             }
 
-            //system("read -n1 -p ' ' key"); //? Pause : in MacOS
-            system("pause"); //? Pause : in Windows
+            system("read -n1 -p ' ' key"); //? Pause : in MacOS
+            // system("pause"); //? Pause : in Windows
 
-            //system("clear"); //? Clear : in MacOS
-            system("CLS"); //? Clear : in Windows
+            system("clear"); //? Clear : in MacOS
+            // system("CLS"); //? Clear : in Windows
             menu_employee(number);
             break;
 
@@ -95,11 +95,11 @@ void menu()
                 break;
             }
 
-            // system("read -n1 -p ' ' key"); //? Pause : in MacOS
-            system("pause"); //? Pause : in Windows
+            system("read -n1 -p ' ' key"); //? Pause : in MacOS
+            // system("pause"); //? Pause : in Windows
 
-            // system("clear"); //? Clear : in MacOS
-            system("CLS"); //? Clear : in Windows
+            system("clear"); //? Clear : in MacOS
+            // system("CLS"); //? Clear : in Windows
             menu_customer(number);
             break;
 
@@ -118,11 +118,11 @@ void menu()
         cout << "\n\n"
              << "==============================================" << endl;
 
-        // system("read -n1 -p ' ' key"); //? Pause : in MacOS
-        system("pause"); //? Pause : in Windows
+        system("read -n1 -p ' ' key"); //? Pause : in MacOS
+        // system("pause"); //? Pause : in Windows
 
-        // system("clear");
-        system("CLS"); //? Clear : in Windows
+        system("clear");
+        // system("CLS"); //? Clear : in Windows
 
     } while (input != '0');
 }

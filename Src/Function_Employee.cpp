@@ -34,8 +34,6 @@ void Employee::show_employee()
     cout << "\nEmployee Number : " << Enumber << endl;
 
     cout << "\nEmployee Holder Name : " << Ename << endl;
-
-    cout << "\n------------------------------------------\n";
 }
 
 void Employee::modify()
@@ -56,7 +54,7 @@ void Employee::report()
     //"======================================================"
     //"  Employee no.           Name            Password     "
     //"======================================================"
-    cout << "  " << left << setw(14) << Enumber << setw(31) << Ename << setw(12) << Epassword << endl;
+    cout << "  " << left << setw(23) << Enumber << setw(18) << Ename << setw(12) << Epassword << endl;
 }
 
 int Employee::get_Enumber()
@@ -194,6 +192,8 @@ void modify_employee(int empNumber)
 
 void delete_employee(int empNumber)
 {
+    bool find{false};
+
     Employee employee;
 
     ifstream inFile;
@@ -211,27 +211,39 @@ void delete_employee(int empNumber)
 
     while (inFile.read((char *)&employee, sizeof(Employee)))
     {
-        if (employee.get_Cnumber() != empNumber)
+        if (employee.get_Enumber() != empNumber)
         {
             outFile.write((char *)&employee, sizeof(Employee));
+        }
+        else if (employee.get_Enumber() == empNumber)
+        {
+            find = true;
         }
     }
     inFile.close();
     outFile.close();
 
-    remove("../Data/Employee.dat");
-    rename("../Data/Temp.dat", "../Data/Employee.dat");
+    if (find == false)
+    {
+        cout << "\n\nEmployee number does not exist ...";
+        remove("../Data/Temp.dat");
+    }
+    else if (find == true)
+    {
+        remove("../Data/Employee.dat");
+        rename("../Data/Temp.dat", "../Data/Employee.dat");
 
-    cout << "\n\n\tRecord Deleted ...";
+        cout << "\n\n\tRecord Deleted ...";
+    }
 }
 
 //=================================== FUNCTION : 5 ===========================================
 
 void display_one_employee(int empNumber)
 {
-    Employee employee;
+    bool find{false};
 
-    bool find = false;
+    Employee employee;
 
     ifstream inFile("../Data/Employee.dat", ios::binary);
     if (!inFile)
@@ -240,12 +252,12 @@ void display_one_employee(int empNumber)
         return;
     }
 
-    cout << "\nEmployee DETAILS\n";
-
     while (inFile.read((char *)&employee, sizeof(Employee)))
     {
         if (employee.get_Enumber() == empNumber)
         {
+            cout << "\nEmployee DETAILS\n";
+            cout << "----------------\n";
             employee.show_employee();
             find = true;
             break;
@@ -255,7 +267,7 @@ void display_one_employee(int empNumber)
 
     if (find == false)
     {
-        cout << "\n\nAccount number does not exist";
+        cout << "\n\nEmployee number does not exist ...";
     }
 }
 

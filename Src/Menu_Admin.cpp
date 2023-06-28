@@ -39,6 +39,9 @@ void menu_admin()
         cout << "\n\n\t6) Delete Customer                  --                  Hazf Moshtari (6";
         cout << "\n\n\t7) One Customer List                --                  List Yek Moshtari (7";
         cout << "\n\n\t8) All Customers List               --                  List Tamam Moshtari (8";
+
+        cout << "\n\n\t------------------------------------------------------------------------------";
+
         cout << "\n\n\t9) All Account List                 --                  List Tamam Account (9)";
 
         cout << "\n\n\t------------------------------------------------------------------------------";
@@ -69,7 +72,7 @@ void menu_admin()
 
         case '4':
             display_all_employee();
-            break;        
+            break;
 
         case '5':
             write_customer();
@@ -95,8 +98,8 @@ void menu_admin()
             display_all_account_all();
             break;
         case '0':
-            // system("clear");
-            system("CLS"); //? Clear : in Windows
+            system("clear");
+            // system("CLS"); //? Clear : in Windows
 
             cout << "\n\n\t\t\t\tWelcome Back to Main Menu\n\n";
 
@@ -109,13 +112,13 @@ void menu_admin()
         }
 
         cout << "\n\n"
-             << "==============================================" << endl;
+             << "======================================================" << endl;
 
-        // system("read -n1 -p ' ' key"); //? Pause : in MacOS
-        system("pause"); //? Pause : in Windows
+        system("read -n1 -p ' ' key"); //? Pause : in MacOS
+        // system("pause"); //? Pause : in Windows
 
-        // system("clear");
-        system("CLS"); //? Clear : in Windows
+        system("clear");
+        // system("CLS"); //? Clear : in Windows
 
     } while (input != '0');
 }

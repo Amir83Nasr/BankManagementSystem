@@ -76,7 +76,7 @@ void menu_customer(int cinNum)
             break;
 
         case '6':
-            display_all_account(name);
+            display_all_account(cstNumber);
             cout << "\n\n\tEnter the Account number : ";
             cin >> actNum;
             if (login_account(actNum) == false)
@@ -88,8 +88,8 @@ void menu_customer(int cinNum)
             break;
 
         case '0':
-            //system("clear");
-            system("CLS"); //? Clear : in Windows
+            system("clear");
+            // system("CLS"); //? Clear : in Windows
 
             cout << "\n\n\t\t\t\tWelcome Back to Main Menu\n\n";
 
@@ -103,13 +103,13 @@ void menu_customer(int cinNum)
         }
 
         cout << "\n\n"
-             << "==============================================" << endl;
+             << "======================================================" << endl;
 
-        //system("read -n1 -p ' ' key"); //? Pause : in MacOS
-        system("pause"); //? Pause : in Windows
+        system("read -n1 -p ' ' key"); //? Pause : in MacOS
+        // system("pause"); //? Pause : in Windows
 
-        // system("clear"); //? Clear : in MacOS
-        system("CLS"); //? Clear : in Windows
+        system("clear"); //? Clear : in MacOS
+        // system("CLS"); //? Clear : in Windows
 
     } while (input != '0');
 }

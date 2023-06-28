@@ -33,18 +33,14 @@ void Customer::create_customer(int Cnum)
     cout << "\n\n ===== Customer Created ... =====";
 }
 
-
 void Customer::show_customer()
 {
     cout << "\nCustomer Number : " << Cnumber << endl;
-
     cout << "\nCustomer Holder Name : " << Cname << endl;
 
-    show_account();
+    cout << "\n------------------------------------------" << endl;
 
-    // cout << "\nBalance amount : " << Cbalance << endl;
-
-    cout << "\n------------------------------------------\n";
+    // display_all_account();
 }
 
 void Customer::modify()
@@ -74,8 +70,7 @@ void Account::draw(int x)
 
 void Customer::report()
 {
-    // "  Customer no.           Name             Pass "
-        cout << "  " << left << setw(14) << Cnumber << setw(26) << Cname << setw(12) << Cpassword << endl;
+    cout << "  " << left << setw(23) << Cnumber << setw(18) << Cname << setw(12) << Cpassword << endl;
 }
 
 //--------------- Get & Set -----------------
@@ -95,7 +90,7 @@ int Customer::get_Cpassword()
     return Cpassword;
 }
 
-const char* Customer::get_Cname() const
+const char *Customer::get_Cname() const
 {
     return Cname;
 }
@@ -187,6 +182,8 @@ void modify_customer(int cstNumber)
 
 void delete_customer(int cstNumber)
 {
+    bool find{false};
+
     Customer customer;
 
     ifstream inFile;
@@ -199,32 +196,41 @@ void delete_customer(int cstNumber)
         return;
     }
 
-    outFile.open("../Data/Temp.dat", ios::binary);
-    inFile.seekg(0, ios::beg);
-
     while (inFile.read((char *)&customer, sizeof(Customer)))
     {
         if (customer.get_Cnumber() != cstNumber)
         {
             outFile.write((char *)&customer, sizeof(Customer));
         }
+        else if (customer.get_Cnumber() == cstNumber)
+        {
+            find = true;
+        }
     }
     inFile.close();
     outFile.close();
 
-    remove("../Data/Customer.dat");
-    rename("../Data/Temp.dat", "../Data/Customer.dat");
+    if (find == false)
+    {
+        cout << "\n\nCustomer number does not exist ...";
+        remove("../Data/Temp.dat");
+    }
+    else if (find == true)
+    {
+        remove("../Data/Customer.dat");
+        rename("../Data/Temp.dat", "../Data/Customer.dat");
 
-    cout << "\n\n\tRecord Deleted ...";
+        cout << "\n\n\tRecord Deleted ...";
+    }
 }
 
 //=================================== FUNCTION : 4 ===========================================
 
 void display_one_customer(int cstNumber)
 {
-    Customer customer;
+    bool find{false};
 
-    bool find = false;
+    Customer customer;
 
     ifstream inFile("../Data/Customer.dat", ios::binary);
     if (!inFile)
@@ -233,13 +239,15 @@ void display_one_customer(int cstNumber)
         return;
     }
 
-    cout << "\nBALANCE DETAILS\n";
-
     while (inFile.read((char *)&customer, sizeof(Customer)))
     {
         if (customer.get_Cnumber() == cstNumber)
         {
+            cout << "\nCustomer DETAILS\n";
+            cout << "----------------\n";
             customer.show_customer();
+            display_all_account(cstNumber);
+
             find = true;
             break;
         }
@@ -248,7 +256,7 @@ void display_one_customer(int cstNumber)
 
     if (find == false)
     {
-        cout << "\n\nAccount number does not exist";
+        cout << "\n\nCustomer number does not exist ...";
     }
 }
 
@@ -266,7 +274,7 @@ void display_all_customer()
     }
 
     cout << "\n\n\t\tACCOUNT HOLDER LIST\n\n";
-    cout << "=====================================================\n";
+    cout << "======================================================\n";
     cout << "  Customer no.           Name             Balance\n";
     cout << "======================================================\n";
 
@@ -367,7 +375,6 @@ void deposit_withdraw(int actNumber, int option)
 
 //             accountSend.draw(amount);
 //             accountRec.deposit(amount);
-        
 
 //             long int pos1 = (-1) * (sizeof(Account));
 //             File.seekp(pos1, ios::cur);
@@ -414,7 +421,6 @@ bool login_customer(int cinNumPass, int cinNum)
             login = true;
             break;
         }
-        
     }
 
     if (login == true)
@@ -428,7 +434,5 @@ bool login_customer(int cinNumPass, int cinNum)
         return false;
     }
 }
-
-
 
 //========================================================================================

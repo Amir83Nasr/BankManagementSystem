@@ -74,13 +74,13 @@ void menu_account(int actNum)
         }
 
         cout << "\n\n"
-             << "==============================================" << endl;
+             << "======================================================" << endl;
 
-        //system("read -n1 -p ' ' key"); //? Pause : in MacOS
-        system("pause"); //? Pause : in Windows
+        system("read -n1 -p ' ' key"); //? Pause : in MacOS
+        // system("pause"); //? Pause : in Windows
 
-        //system("clear");
-        system("CLS"); //? Clear : in Windows
+        system("clear");
+        // system("CLS"); //? Clear : in Windows
 
     } while (input != '0');
 }

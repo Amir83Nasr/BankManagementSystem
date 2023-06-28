@@ -1,20 +1,6 @@
-//***************************************************************
-//                   HEADER FILE USED IN PROJECT - OpenCode
-//****************************************************************
-
-// input/output library refers to a family of class templates and supporting functions in the C++ Standard Library that implement stream-based input/output capabilities
 #include <iostream>
-
-// Input/output stream class to operate on files
 #include <fstream>
-
-// header file of the C Standard Library declares several functions that are useful for testing and mapping characters
-#include <ctype.h>
-
-// Header providing parametric manipulators (like setw() in line 78)
 #include <iomanip>
-
-// The C programming language provides many standard library functions for file input and output.
 #include <stdio.h>
 
 using namespace std;
