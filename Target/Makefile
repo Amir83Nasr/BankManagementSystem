@@ -40,4 +40,4 @@ Menu_Account.o : ../Src/Menu_Account.cpp ../Lib/Menu.hpp
 #===========================================================================
 
 # Main.exe : 
-# 	g++ -o Main.exe Main.cpp Function_Admin.cpp Function_Employee.cpp Function_Customer.cpp Function_Account.cpp Menu_Main.cpp Menu_Admin.cpp Menu_Employee.cpp Menu_Customer.cpp Menu_Account.cpp
+# 	g++ -o Main.exe ../Src/Main.cpp ../Src/Function_Admin.cpp ../Src/Function_Employee.cpp ../Src/Function_Customer.cpp ../Src/Function_Account.cpp ../Src/Menu_Main.cpp ../Src/Menu_Admin.cpp ../Src/Menu_Employee.cpp ../Src/Menu_Customer.cpp ../Src/Menu_Account.cpp
