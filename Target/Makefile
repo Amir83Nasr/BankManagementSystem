@@ -20,7 +20,7 @@ Function_Customer.o : ../Src/Function_Customer.cpp
 Function_Account.o : ../Src/Function_Account.cpp
 	g++ -c ../Src/Function_Account.cpp
 
-#================================== MENU ==================================
+# #================================== MENU ==================================
 	
 Menu_Main.o : ../Src/Menu_Main.cpp ../Lib/Menu.hpp
 	g++ -c ../Src/Menu_Main.cpp
@@ -37,7 +37,13 @@ Menu_Customer.o : ../Src/Menu_Customer.cpp ../Lib/Menu.hpp
 Menu_Account.o : ../Src/Menu_Account.cpp ../Lib/Menu.hpp
 	g++ -c ../Src/Menu_Account.cpp
 
+remove:
+	rm -rf Main.exe Main.o Function_Admin.o Function_Employee.o Function_Customer.o Function_Account.o Menu_Main.o Menu_Admin.o Menu_Employee.o Menu_Customer.o Menu_Account.o
+
 #===========================================================================
 
 # Main.exe : 
 # 	g++ -o Main.exe ../Src/Main.cpp ../Src/Function_Admin.cpp ../Src/Function_Employee.cpp ../Src/Function_Customer.cpp ../Src/Function_Account.cpp ../Src/Menu_Main.cpp ../Src/Menu_Admin.cpp ../Src/Menu_Employee.cpp ../Src/Menu_Customer.cpp ../Src/Menu_Account.cpp
+
+# Main.exe : 
+# 	g++ -o Main.exe ../Src/*.cpp

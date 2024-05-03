@@ -15,10 +15,11 @@ using namespace std;
 
 //===============================================
 
-class Admin : public Employee 
+class Admin : public Employee
 {
 private:
     static const string admPassword;
+
 public:
     static string get_admPassword()
     {

@@ -95,7 +95,7 @@ public:
 
     int get_Cpassword();
 
-    const char* get_Cname() const;
+    const char *get_Cname() const;
 };
 
 //===============================================

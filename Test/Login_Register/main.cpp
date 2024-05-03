@@ -33,18 +33,18 @@ int main()
 
         cout << endl;
 
-        switch (input)
+        switch (input)‍‍
         {
         case '1':
-            Login();
+            // Login();
             break;
 
         case '2':
-            Register();
+            // Register();
             break;
 
         case '0':
-            
+
             break;
 
         default:
@@ -53,8 +53,6 @@ int main()
         }
 
     } while (input != '0');
-
-    
 
     return 0;
 }

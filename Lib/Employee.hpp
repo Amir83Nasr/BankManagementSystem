@@ -29,7 +29,6 @@ public:
 
     int get_Enumber();
     int get_Epassword();
-
 };
 
 //===============================================
